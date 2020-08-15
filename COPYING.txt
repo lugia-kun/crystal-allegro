@@ -1,9 +1,3 @@
-This software is licensed under the same license to the Allegro 5.
-
-The copyright holder of this license is:
-Copyright (c) 2004-2015 the Allegro 5 Development Team
-
-The copyright holder of this software is:
 Copyright (c) 2020 Hajime Yoshimori
 
 This software is provided 'as-is', without any express or implied
