@@ -1,4 +1,4 @@
-name: crystal-allegro
+name: allegro
 version: 0.1.0
 
 authors:
@@ -7,4 +7,3 @@ authors:
 crystal: 0.35.1
 
 license: zlib
-

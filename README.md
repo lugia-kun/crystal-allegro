@@ -10,7 +10,7 @@ TODO: Currently nothing is implemented.
 
    ```yaml
    dependencies:
-     crystal-allegro:
+     allegro:
        github: lugia-kun/crystal-allegro
    ```
 
@@ -19,7 +19,7 @@ TODO: Currently nothing is implemented.
 ## Usage
 
 ```crystal
-require "crystal-allegro"
+require "allegro"
 ```
 
 TODO: Write usage instructions here
