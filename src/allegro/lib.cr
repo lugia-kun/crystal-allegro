@@ -39,9 +39,9 @@ module Allegro
     # :nodoc:
     MACRO_VARIABLES = {{ data.keys }}
 
-    # PI value should be used for allegro library
+    # Math PI value defined for Allegro library
     #
-    # The value can be different from `Math::PI`
+    # The value can be different from Crystal's `Math::PI`
     PI = {{ data["ALLEGRO_PI"].id }}
 
     # :nodoc:
@@ -82,15 +82,23 @@ module Allegro
     alias UInt = LibC::UInt
     alias Float = LibC::Float
     alias Double = LibC::Double
+    alias IntPtrT = LibC::SSizeT # TODO: SizeT is based on Allowable size, not representing address space
+    alias SizeT = LibC::SizeT
+    alias OffT = LibC::OffT
+    alias TimeT = LibC::TimeT
     type Bitmap = Pointer(Void)
     type Config = Pointer(Void)
     type ConfigSection = Pointer(Void)
     type ConfigEntry = Pointer(Void)
     type Display = Pointer(Void)
+    type EventQueue = Pointer(Void)
     type EventSource = Pointer(Void)
     type File = Pointer(Void)
+    type FileSystemEntry = Pointer(Void)
     type Joystick = Pointer(Void)
     type Path = Pointer(Void)
+    type Ustr = Pointer(Void)
+    type Fixed = Int32
 
     # System
 
@@ -181,8 +189,8 @@ module Allegro
 
     # Event
 
-    alias EventType = UInt
-    enum Event
+    alias EventTypeValue = UInt
+    enum EventType
       JOYSTICK_AXIS          = 1
       JOYSTICK_BUTTON_DOWN   = 2
       JOYSTICK_BUTTON_UP     = 3
@@ -222,9 +230,13 @@ module Allegro
     end
 
     struct EventHeader
-      type : EventType
+      type : EventTypeValue
       source : Void*
       timestamp : Double
+    end
+
+    struct AnyEvent
+      header : EventHeader
     end
 
     struct DisplayEvent
@@ -288,14 +300,253 @@ module Allegro
     struct UserEvent
       header : EventHeader
       internal_descriptor : Void*
-      data1 : LibC::PtrdiffT
-      data2 : LibC::PtrdiffT
-      data3 : LibC::PtrdiffT
-      data4 : LibC::PtrdiffT
+      data1 : IntPtrT
+      data2 : IntPtrT
+      data3 : IntPtrT
+      data4 : IntPtrT
     end
+
+    union Event
+      any : AnyEvent
+      display : DisplayEvent
+      joystick : JoystickEvent
+      keyboard : KeyboardEvent
+      mouse : MouseEvent
+      timer : TimerEvent
+      touch : TouchEvent
+      user : UserEvent
+    end
+
+    fun al_create_event_queue : EventQueue
+    fun al_destroy_event_queue(EventQueue) : Void
+    fun al_register_event_source(EventQueue, EventSource) : Void
+    fun al_unregister_event_source(EventQueue, EventSource) : Void
+    fun al_pause_event_source(EventQueue, Bool) : Void
+    fun al_is_event_queue_paused(EventQueue) : Bool
+    fun al_is_event_queue_empty(EventQueue) : Bool
+    fun al_get_next_event(EventQueue, ret_event : Event*) : Bool
+    fun al_peek_next_event(EventQueue, ret_event : Event*) : Bool
+    fun al_drop_next_event(EventQueue) : Bool
+    fun al_flush_event_queue(EventQueue) : Void
+    fun al_wait_for_event(EventQueue, ret_event : Event*) : Void
+    fun al_wait_for_event_timed(EventQueue, ret_event : Event*, secs : Float) : Bool
+    fun al_wait_for_event_until(EventQueue, ret_event : Event*, timeout : Float) : Bool
+
+    fun al_init_user_event_source(EventSource) : Void
+    fun al_destroy_user_event_source(EventSource) : Void
+    fun al_emit_user_event(EventSource, event : Event*, dtor : Event* -> Void) : Void
+    fun al_unref_user_event(UserEvent*) : Void
+    fun al_set_event_source_data(EventSource, data : Void*) : Void # Real prototype is IntPtrT
+    fun al_get_event_source_data(EventSource) : Void*
+
+    # File I/O
+
+    struct FileInterface
+      fi_fopen : (UInt8*, UInt8*) -> Void*
+      fi_fclose : File -> Bool
+      fi_fread : (File, Void*, SizeT) -> SizeT
+      fi_fwrite : (File, Void*, SizeT) -> SizeT
+      fi_fflush : File -> Bool
+      fi_ftell : File -> Int64
+      fi_fseek : (File, Int64, Int) -> Bool
+      fi_feof : File -> Bool
+      fi_ferror : File -> Int
+      fi_ferrmsg : File -> UInt8*
+      fi_fclearerr : File -> Void
+      fi_fungetc : (File, Int) -> Int
+      fi_fsize : File -> OffT
+    end
+
+    enum Seek
+      SET = 0
+      CUR
+      END
+    end
+
+    @[Raises]
+    fun al_fopen(path : UInt8*, mode : UInt8*) : File
+    @[Raises]
+    fun al_fopen_interface(vt : FileInterface, path : UInt8*, mode : UInt8*) : File
+    @[Raises]
+    fun al_fopen_slice(fp : File, initial_size : SizeT, mode : UInt8*) : File
+    @[Raises]
+    fun al_fclose(File) : Bool
+    @[Raises]
+    fun al_fread(File, ptr : Void*, size : SizeT) : SizeT
+    @[Raises]
+    fun al_fwrite(File, ptr : Void*, size : SizeT) : SizeT
+    @[Raises]
+    fun al_fflush(File) : Bool
+    @[Raises]
+    fun al_ftell(File) : Int64
+    @[Raises]
+    fun al_fseek(File, offset : Int64, whence : Int) : Bool
+    @[Raises]
+    fun al_feof(File) : Bool
+    @[Raises]
+    fun al_ferror(File) : Int
+    @[Raises]
+    fun al_ferrmsg(File) : UInt8*
+    @[Raises]
+    fun al_fclearerr(File) : Void
+    @[Raises]
+    fun al_fungetc(File, c : Int) : Int
+    @[Raises]
+    fun al_fsize(File) : Int64
+    @[Raises]
+    fun al_fgetc(File) : Int
+    @[Raises]
+    fun al_fputc(File, c : Int) : Int
+    @[Raises]
+    fun al_fprintf(File, format : UInt8*, ...) : Int
+    @[Raises]
+    fun al_vfprintf(File, format : UInt8*, args : LibC::VaList) : Int
+    @[Raises]
+    fun al_fread16le(File) : Int16
+    @[Raises]
+    fun al_fread16be(File) : Int16
+    @[Raises]
+    fun al_fwrite16le(File, Int16) : SizeT
+    @[Raises]
+    fun al_fwrite16be(File, Int16) : SizeT
+    @[Raises]
+    fun al_fread32le(File) : Int32
+    @[Raises]
+    fun al_fread32be(File) : Int32
+    @[Raises]
+    fun al_fwrite32le(File, Int32) : SizeT
+    @[Raises]
+    fun al_fwrite32be(File, Int32) : SizeT
+    @[Raises]
+    fun al_fgets(File, buf : UInt8*, max : SizeT) : UInt8*
+    @[Raises]
+    fun al_fget_ustr(File) : Ustr
+    @[Raises]
+    fun al_fopen_fd(fd : Int, mode : UInt8*) : File
+    fun al_make_temp_file(template : UInt8*, ret_path : Path*) : File
+    fun al_set_new_file_interface(FileInterface*) : Void
+    fun al_standard_file_interface : Void
+    fun al_get_new_file_interface : FileInterface*
+    @[Raises]
+    fun al_create_file_handle(drv : FileInterface*, uesrdata : Void*) : File
+    fun al_get_file_userdata(File) : Void*
+
+    # FIlesystem
+
+    @[Flags]
+    enum FileMode
+      Read    = 1
+      Write   = 1 << 1
+      Execute = 1 << 2
+      Hidden  = 1 << 3
+      IsFile  = 1 << 4
+      IsDir   = 1 << 5
+    end
+
+    struct FileSystemInterface
+      fs_create_entry : UInt8* -> FileSystemEntry
+      fs_destroy_entry : FileSystemEntry -> Void
+      fs_entry_name : FileSystemEntry -> UInt8*
+      fs_update_entry : FileSystemEntry -> Bool
+      fs_entry_mode : FileSystemEntry -> UInt32
+      fs_entry_atime : FileSystemEntry -> TimeT
+      fs_entry_mtime : FileSystemEntry -> TimeT
+      fs_entry_ctime : FileSystemEntry -> TimeT
+      fs_entry_size : FileSystemEntry -> OffT
+      fs_entry_exists : FileSystemEntry -> Bool
+      fs_remove_entry : FileSystemEntry -> Bool
+
+      fs_open_directory : FileSystemEntry -> Bool
+      fs_read_directory : FileSystemEntry -> FileSystemEntry
+      fs_get_current_directory : -> UInt8*
+      fs_change_directory : UInt8* -> Bool
+      fs_make_directory : UInt8* -> Bool
+      fs_open_file : (FileSystemEntry, UInt8*) -> File
+    end
+
+    enum FileSystemEntryResult
+      ERROR = -1
+      OK    =  0
+      SKIP  =  1
+      STOP  =  2
+    end
+
+    @[Raises]
+    fun al_create_fs_entry(path : UInt8*) : FileSystemEntry
+    @[Raises]
+    fun al_destroy_fs_entry(FileSystemEntry) : Void
+    @[Raises]
+    fun al_get_fs_entry_name(FileSystemEntry) : UInt8*
+    @[Raises]
+    fun al_update_fs_entry(FileSystemEntry) : Bool
+    @[Raises]
+    fun al_get_fs_entry_mode(FileSystemEntry) : UInt32
+    @[Raises]
+    fun al_get_fs_entry_atime(FileSystemEntry) : TimeT
+    @[Raises]
+    fun al_get_fs_entry_ctime(FileSystemEntry) : TimeT
+    @[Raises]
+    fun al_get_fs_entry_mtime(FileSystemEntry) : TimeT
+    @[Raises]
+    fun al_get_fs_entry_size(FileSystemEntry) : OffT
+    @[Raises]
+    fun al_get_fs_entry_exists(FileSystemEntry) : Bool
+    @[Raises]
+    fun al_remove_fs_entry(FileSystemEntry) : Bool
+    @[Raises]
+    fun al_filename_exists(path : UInt8*) : Bool
+    @[Raises]
+    fun al_remove_filename(path : UInt8*) : Bool
+
+    @[Raises]
+    fun al_open_directory(FileSystemEntry) : FileSystemEntry
+    @[Raises]
+    fun al_read_directory(FileSystemEntry) : FileSystemEntry
+    @[Raises]
+    fun al_close_directory(FileSystemEntry) : Bool
+    @[Raises]
+    fun al_get_current_directory : UInt8*
+    @[Raises]
+    fun al_change_directory(path : UInt8*) : Bool
+    @[Raises]
+    fun al_make_directory(path : UInt8*) : Bool
+    @[Raises]
+    fun al_open_entry(FileSystemEntry, mode : UInt8*) : File
+
+    @[Raises]
+    fun al_for_each_fs_entry(FileSystemEntry, callback : (FileSystemEntry, Void*) -> Int, extra : Void*) : Int
+
+    fun al_set_fs_interface(FileSystemInterface*) : Void
+    fun al_set_standard_fs_interface : Void
+    fun al_get_fs_interface : FileSystemInterface*
+
+    # Fixed point path
+
+    fun al_itofix(Int) : Fixed
+    fun al_fixtoi(Fixed) : Int
+    fun al_fixfloor(Fixed) : Int
+    fun al_fixceil(Fixed) : Int
+    fun al_ftofix(Double) : Fixed
+    fun al_fixtof(Fixed) : Double
+    fun al_fixmul(Fixed, Fixed) : Fixed
+    fun al_fixdiv(Fixed, Fixed) : Fixed
+    fun al_fixadd(Fixed, Fixed) : Fixed
+    fun al_fixsub(Fixed, Fixed) : Fixed
+
+    $al_fixtorad_r : Fixed # 1608
+    $al_radtofix_r : Fixed # 2670177
+
+    fun al_fixsin(Fixed) : Fixed
+    fun al_fixcos(Fixed) : Fixed
+    fun al_fixtan(Fixed) : Fixed
+    fun al_fixasin(Fixed) : Fixed
+    fun al_fixacos(Fixed) : Fixed
+    fun al_fixatan(Fixed) : Fixed
+    fun al_fixatan2(Fixed, Fixed) : Fixed
+    fun al_fixsqrt(Fixed) : Fixed
+    fun al_fixhypot(Fixed, Fixed) : Fixed
   end
 
-  {% p LibC.constants %}
   # :nodoc:
   macro al_id_table_lookup(table_data, a, b, c, d, &)
     {% table = {} of CharLiteral => NumberLiteral %}
