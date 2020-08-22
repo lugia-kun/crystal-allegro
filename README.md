@@ -53,6 +53,7 @@ loop do
   end
 end
 ```
+![Screenshot of Vivace example](./examples/vivace.png)
 
 TODO: Write usage instructions here
 
