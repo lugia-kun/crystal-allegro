@@ -78,6 +78,7 @@ module Allegro
   # Core module
   @[Link(ldflags: "`pkg-config allegro-5 --libs`")]
   lib LibCore
+    alias UChar = LibC::UChar
     alias Int = LibC::Int
     alias UInt = LibC::UInt
     alias Float = LibC::Float
@@ -97,6 +98,7 @@ module Allegro
     type FileSystemEntry = Pointer(Void)
     type Joystick = Pointer(Void)
     type Path = Pointer(Void)
+    type Timer = Pointer(Void)
     type Ustr = Pointer(Void)
     type Fixed = Int32
 
@@ -189,8 +191,7 @@ module Allegro
 
     # Event
 
-    alias EventTypeValue = UInt
-    enum EventType
+    enum EventType : UInt
       JOYSTICK_AXIS          = 1
       JOYSTICK_BUTTON_DOWN   = 2
       JOYSTICK_BUTTON_UP     = 3
@@ -230,7 +231,7 @@ module Allegro
     end
 
     struct EventHeader
-      type : EventTypeValue
+      type : EventType
       source : Void*
       timestamp : Double
     end
@@ -545,6 +546,235 @@ module Allegro
     fun al_fixatan2(Fixed, Fixed) : Fixed
     fun al_fixsqrt(Fixed) : Fixed
     fun al_fixhypot(Fixed, Fixed) : Fixed
+
+    # Fullscreen modes
+
+    struct DisplayMode
+      width : Int
+      height : Int
+      format : Int
+      refresh_rate : Int
+    end
+
+    fun al_get_display_mode(index : Int, mode : DisplayMode*) : DisplayMode*
+    fun al_get_num_display_modes : Int
+
+    # Graphic
+
+    struct Color
+      r : Float
+      g : Float
+      b : Float
+      a : Float
+    end
+
+    fun al_map_rgb(r : UChar, g : UChar, b : UChar) : Color
+    fun al_map_rgb_f(r : Float, g : Float, b : Float) : Color
+    fun al_map_rgba(r : UChar, g : UChar, b : UChar, a : UChar) : Color
+    fun al_premul_rgba(r : UChar, g : UChar, b : UChar, a : UChar) : Color
+    fun al_map_rgba_f(r : Float, g : Float, b : Float, a : Float) : Color
+    fun al_premul_rgba_f(r : Float, g : Float, b : Float, a : Float) : Color
+    fun al_unmap_rgb(Color, r : UChar*, g : UChar*, b : UChar*) : Color
+    fun al_unmap_rgb_f(Color, r : Float*, g : Float*, b : Float*) : Color
+    fun al_unmap_rgba(Color, r : UChar*, g : UChar*, b : UChar*, a : UChar*) : Color
+    fun al_unmap_rgba_f(Color, r : Float*, g : Float*, b : Float*, a : UChar*) : Color
+
+    struct LockedRegion
+      data : Void*
+      format : Int
+      pitch : Int
+      pixel_size : Int
+    end
+
+    enum PixelFormat
+      ANY                  =  0
+      ANY_NO_ALPHA         =  1
+      ANY_WITH_ALPHA       =  2
+      ANY_15_NO_ALPHA      =  3
+      ANY_16_NO_ALPHA      =  4
+      ANY_16_WITH_ALPHA    =  5
+      ANY_24_NO_ALPHA      =  6
+      ANY_32_NO_ALPHA      =  7
+      ANY_32_WITH_ALPHA    =  8
+      ARGB_8888            =  9
+      RGBA_8888            = 10
+      ARGB_4444            = 11
+      RGB_888              = 12
+      RGB_565              = 13
+      RGB_555              = 14
+      RGBA_5551            = 15
+      ARGB_1555            = 16
+      ABGR_8888            = 17
+      XBGR_8888            = 18
+      BGR_888              = 19
+      BGR_565              = 20
+      BGR_555              = 21
+      RGBX_8888            = 22
+      XRGB_8888            = 23
+      ABGR_F32             = 24
+      ABGR_8888_LE         = 25
+      RGBA_4444            = 26
+      SINGLE_CHANNEL_8     = 27
+      COMPRESSED_RGBA_DXT1 = 28
+      COMPRESSED_RGBA_DXT3 = 29
+      COMPRESSED_RGBA_DXT5 = 30
+    end
+
+    fun al_get_pixel_size(format : Int) : Int
+    fun al_get_pixel_format_bits(format : Int) : Int
+    fun al_get_pixel_block_size(format : Int) : Int
+    fun al_get_pixel_block_height(format : Int) : Int
+    fun al_lock_bitmap(Bitmap, format : Int, flags : Int) : LockedRegion*
+    fun al_lock_bitmap_region(Bitmap, x : Int, y : Int, width : Int, height : Int, format : Int, flags : Int) : LockedRegion*
+    fun al_unlock_bitmap(Bitmap) : Void
+    fun al_lock_bitmap_blocked(Bitmap, flags : Int) : LockedRegion*
+    fun al_lock_bitmap_region_blocked(Bitmap, x_block : Int, y_block : Int, width_block : Int, height_block : Int, flags : Int) : LockedRegion*
+
+    fun al_create_bitmap(w : Int, h : Int) : Bitmap
+    fun al_create_sub_bitmap(Bitmap, x : Int, y : Int, w : Int, h : Int) : Bitmap
+    fun al_clone_bitmap(Bitmap) : Bitmap
+    fun al_convert_bitmap(Bitmap) : Void
+    fun al_convert_memory_bitmaps : Void
+    fun al_destroy_bitmap(Bitmap) : Void
+    fun al_get_new_bitmap_flags : Int
+    fun al_get_new_bitmap_format : Int
+    fun al_set_new_bitmap_flags(flags : Int) : Void
+    fun al_add_new_bitmap_flag(flags : Int) : Void
+    fun al_set_new_bitmap_format(format : Int) : Void
+    fun al_set_new_bitmap_depth(depth : Int) : Void
+    fun al_get_new_bitmap_depth : Int
+    fun al_set_new_bitmap_samples(samples : Int) : Void
+    fun al_get_bitmap_flags(Bitmap) : Int
+    fun al_get_bitmap_format(Bitmap) : Int
+    fun al_get_bitmap_height(Bitmap) : Int
+    fun al_get_bitmap_width(Bitmap) : Int
+    fun al_get_bitmap_depth(Bitmap) : Int
+    fun al_get_bitmap_samples(Bitmap) : Int
+    fun al_is_bitmap_locked(Bitmap) : Bool
+    fun al_is_compatible_bitmap(Bitmap) : Bool
+    fun al_is_sub_bitmap(Bitmap) : Bool
+    fun al_get_parent_bitmap(Bitmap) : Bitmap
+    fun al_get_bitmap_x(Bitmap) : Int
+    fun al_get_bitmap_y(Bitmap) : Int
+    fun al_reparent_bitmap(Bitmap, parent : Bitmap, x : Int, y : Int, w : Int, h : Int) : Void
+    fun al_get_bitmap_blender(op : Int*, src : Int*, dst : Int*) : Void
+    fun al_get_separate_bitmap_blender(op : Int*, src : Int*, dst : Int*, alpha_op : Int*, alpha_src : Int*, alpha_dst : Int*) : Void
+    fun al_get_bitmap_blend_color : Color
+    fun al_set_bitmap_blender(op : Int, src : Int, dest : Int) : Void
+    fun al_set_separate_bitmap_blender(op : Int, src : Int, dst : Int, alpha_op : Int, alpha_src : Int, alpha_dst : Int) : Void
+    fun al_set_bitmap_blend_color(Color) : Void
+    fun al_reset_bitmap_blender : Void
+
+    fun al_clear_to_color(Color) : Void
+    fun al_clear_depth_buffer(z : Float) : Void
+    fun al_draw_bitmap(Bitmap, dx : Float, dy : Float, flags : Int) : Void
+    fun al_draw_tinted_bitmap(Bitmap, tint : Color, dx : Float, dy : Float, flags : Int) : Void
+    fun al_draw_bitmap_region(Bitmap, sx : Float, sy : Float, sw : Float, sh : Float, dx : Float, dy : Float, flags : Int) : Void
+    fun al_draw_tinted_bitmap_region(Bitmap, tint : Color, sx : Float, sy : Float, sw : Float, sh : Float, dx : Float, dy : Float, flags : Int) : Void
+    fun al_draw_pixel(x : Float, y : Float, color : Color) : Void
+    fun al_draw_rotated_bitmap(Bitmap, cx : Float, cy : Float, dx : Float, dy : Float, angle : Float, flags : Int) : Void
+    fun al_draw_tinted_rotated_bitmap(Bitmap, tint : Color, cx : Float, cy : Float, dx : Float, dy : Float, angle : Float, flags : Int) : Void
+    fun al_draw_scaled_rotated_bitmap(Bitmap, cx : Float, cy : Float, dx : Float, dy : Float, xscale : Float, yscale : Float, angle : Float, flags : Int) : Void
+    fun al_draw_tinted_scaled_rotated_bitmap(Bitmap, tint : Color, cx : Float, cy : Float, dx : Float, dy : Float, xscale : Float, yscale : Float, angle : Float, flags : Int) : Void
+    fun al_draw_tinted_scaled_rotated_bitmap_region(Bitmap, sx : Float, sy : Float, sw : Float, sh : Float, tint : Color, cx : Float, cy : Float, dx : Float, dy : Float, xscale : Float, yscale : Float, angle : Float, flags : Int) : Void
+    fun al_draw_scaled_bitmap(Bitmap, sx : Float, sy : Float, sw : Float, sh : Float, dx : Float, dy : Float, dw : Float, dh : Float, flags : Int) : Void
+    fun al_draw_tinted_scaled_bitmap(Bitmap, tint : Color, sx : Float, sy : Float, sw : Float, sh : Float, dx : Float, dy : Float, dw : Float, dh : Float, flags : Int) : Void
+    fun al_get_target_bitmap : Bitmap
+    fun al_put_pixel(x : Int, y : Int, color : Color) : Void
+    fun al_put_blended_pixel(x : Int, y : Int, color : Color) : Void
+
+    fun al_set_target_bitmap(Bitmap) : Void
+    fun al_set_target_back_buffer(Display) : Void
+    fun al_get_current_display : Display
+
+    fun al_get_blender(op : Int*, src : Int*, dst : Int*) : Void
+    fun al_get_separate_blender(op : Int*, src : Int*, dst : Int*, alpha_op : Int*, alpha_src : Int*, alpha_dst : Int*) : Void
+    fun al_get_blend_color : Color
+    fun al_set_blender(op : Int, src : Int, dst : Int) : Void
+    fun al_set_separate_blender(op : Int, src : Int, dst : Int, alpha_op : Int, alpha_src : Int, alpha_dst : Int) : Void
+
+    fun al_get_clipping_rectangle(x : Int*, y : Int*, w : Int*, h : Int*) : Void
+    fun al_set_clipping_rectangle(x : Int, y : Int, w : Int, h : Int) : Void
+    fun al_reset_clipping_rectangle : Void
+
+    fun al_convert_mask_to_alpha(Bitmap, mask_color : Color) : Void
+
+    fun al_hold_bitmap_drawing(Bool) : Void
+    fun al_is_bitmap_drawing_held : Void
+
+    fun al_register_bitmap_loader(extension : UInt8*, loader : (UInt8*, Int) -> Bitmap) : Bool
+    fun al_register_bitmap_saver(extension : UInt8*, saver : (UInt8*, Bitmap) -> Bool) : Bool
+    fun al_register_bitmap_loader_f(extension : UInt8*, fs_loader : (File, Int) -> Bitmap) : Bool
+    fun al_register_bitmap_saver_f(extension : UInt8*, fs_saver : (File, Bitmap) -> Bitmap) : Bool
+
+    @[Raises]
+    fun al_load_bitmap(filename : UInt8*) : Bitmap
+    @[Raises]
+    fun al_load_bitmap_flags(filename : UInt8*, flags : Int) : Bitmap
+    @[Raises]
+    fun al_load_bitmap_f(File, ident : UInt8*) : Bitmap
+    @[Raises]
+    fun al_load_bitmap_flags_f(File, ident : UInt8*, flags : Int) : Bitmap
+    @[Raises]
+    fun al_save_bitmap(filename : UInt8*, bitmap : Bitmap) : Bool
+    @[Raises]
+    fun al_save_bitmap_f(filename : UInt8*, bitmap : Bitmap) : Bool
+
+    fun al_register_bitmap_identifier(extension : UInt8*, idendifier : File -> Bool) : Bool
+    fun al_identify_bitmap(filename : UInt8*) : UInt8*
+    fun al_identify_bitmap_f(File) : UInt8*
+
+    enum RenderState
+      # ALPHA_TEST was the name of a rare bitmap flag only used on the
+      # Wiz port.  Reuse the name but retain the same value.
+      ALPHA_TEST       = 0x0010
+      WRITE_MASK
+      DEPTH_TEST
+      DEPTH_FUNCTION
+      ALPHA_FUNCTION
+      ALPHA_TEST_VALUE
+    end
+
+    enum RenderFunction
+      NEVER
+      ALWAYS
+      LESS
+      EQUAL
+      LESS_EQUAL
+      GREATER
+      NOT_EQUAL
+      GREATER_EQUAL
+    end
+
+    @[Flags]
+    enum RenderWriteMaskFlags
+      RED   = 1 << 0
+      GREEN = 1 << 1
+      BLUE  = 1 << 2
+      ALPHA = 1 << 3
+      DEPTH = 1 << 4
+      RGB   = (RED | GREEN | BLUE)
+      RGBA  = (RGB | ALPHA)
+    end
+
+    # Misc
+
+    fun al_run_main(argc : Int, argv : UInt8**, user_main : (Int, UInt8**) -> Int) : Int
+
+    # Timer
+
+    fun al_create_timer(Double) : Timer
+    fun al_start_timer(Timer) : Void
+    fun al_stop_timer(Timer) : Void
+    fun al_resume_timer(Timer) : Void
+    fun al_get_timer_started(Timer) : Bool
+    fun al_destroy_timer(Timer) : Void
+    fun al_get_timer_count(Timer) : Int64
+    fun al_set_timer_count(Timer, new_count : Int64) : Void
+    fun al_add_timer_count(Timer, diff : Int64) : Void
+    fun al_get_timer_speed(Timer) : Double
+    fun al_set_timer_speed(Timer, speed : Double) : Void
+    fun al_get_timer_event_source(Timer) : EventSource
   end
 
   # :nodoc:
@@ -605,6 +835,5 @@ module Allegro
   end
 
   alias SystemID = LibCore::SystemID
+  alias EventType = LibCore::EventType
 end
-
-p Allegro::LibCore.al_install_system(Allegro::VERSION_INT, Allegro::AT_EXIT)
