@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.35.1">
+<meta name="crystal_docs.project_version" content="master-dev">
+<meta name="crystal_docs.project_name" content="allegro">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="allegro">
+  <title>Allegro::Key - allegro master-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          allegro
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master-dev
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="allegro/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="allegro/Allegro" data-name="allegro">
+      <a href="../Allegro.html">Allegro</a>
+      
+        <ul>
+  
+  <li class=" " data-id="allegro/Allegro/AssertionFailed" data-name="allegro::assertionfailed">
+      <a href="../Allegro/AssertionFailed.html">AssertionFailed</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Display" data-name="allegro::display">
+      <a href="../Allegro/Display.html">Display</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Error" data-name="allegro::error">
+      <a href="../Allegro/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Event" data-name="allegro::event">
+      <a href="../Allegro/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/EventQueue" data-name="allegro::eventqueue">
+      <a href="../Allegro/EventQueue.html">EventQueue</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/EventSource" data-name="allegro::eventsource">
+      <a href="../Allegro/EventSource.html">EventSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/EventType" data-name="allegro::eventtype">
+      <a href="../Allegro/EventType.html">EventType</a>
+      
+    </li>
+  
+  <li class=" current" data-id="allegro/Allegro/Key" data-name="allegro::key">
+      <a href="../Allegro/Key.html">Key</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Keyboard" data-name="allegro::keyboard">
+      <a href="../Allegro/Keyboard.html">Keyboard</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyboardState" data-name="allegro::keyboardstate">
+      <a href="../Allegro/KeyboardState.html">KeyboardState</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyCharEvent" data-name="allegro::keycharevent">
+      <a href="../Allegro/KeyCharEvent.html">KeyCharEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyDownEvent" data-name="allegro::keydownevent">
+      <a href="../Allegro/KeyDownEvent.html">KeyDownEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyEvent" data-name="allegro::keyevent">
+      <a href="../Allegro/KeyEvent.html">KeyEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyModifiers" data-name="allegro::keymodifiers">
+      <a href="../Allegro/KeyModifiers.html">KeyModifiers</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyUpEvent" data-name="allegro::keyupevent">
+      <a href="../Allegro/KeyUpEvent.html">KeyUpEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/SystemID" data-name="allegro::systemid">
+      <a href="../Allegro/SystemID.html">SystemID</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Timer" data-name="allegro::timer">
+      <a href="../Allegro/Timer.html">Timer</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/TimerEvent" data-name="allegro::timerevent">
+      <a href="../Allegro/TimerEvent.html">TimerEvent</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">alias</span> Allegro::Key
+
+</h1>
+
+
+
+
+
+
+
+  <h2>
+    <a id="alias-definition" class="anchor" href="#alias-definition">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Alias Definition
+  </h2>
+  <code>Allegro::LibCore::Key</code>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+
+
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="KEY_0">
+        <strong>KEY_0</strong> = <code><span class="n">27</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_1">
+        <strong>KEY_1</strong> = <code><span class="n">28</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_2">
+        <strong>KEY_2</strong> = <code><span class="n">29</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_3">
+        <strong>KEY_3</strong> = <code><span class="n">30</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_4">
+        <strong>KEY_4</strong> = <code><span class="n">31</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_5">
+        <strong>KEY_5</strong> = <code><span class="n">32</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_6">
+        <strong>KEY_6</strong> = <code><span class="n">33</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_7">
+        <strong>KEY_7</strong> = <code><span class="n">34</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_8">
+        <strong>KEY_8</strong> = <code><span class="n">35</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_9">
+        <strong>KEY_9</strong> = <code><span class="n">36</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_A">
+        <strong>KEY_A</strong> = <code><span class="n">1</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_ABNT_C1">
+        <strong>KEY_ABNT_C1</strong> = <code><span class="n">94</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_ALT">
+        <strong>KEY_ALT</strong> = <code><span class="n">219</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_ALTGR">
+        <strong>KEY_ALTGR</strong> = <code><span class="n">220</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_AT">
+        <strong>KEY_AT</strong> = <code><span class="n">99</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_B">
+        <strong>KEY_B</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BACK">
+        <strong>KEY_BACK</strong> = <code><span class="n">107</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BACKQUOTE">
+        <strong>KEY_BACKQUOTE</strong> = <code><span class="n">104</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BACKSLASH">
+        <strong>KEY_BACKSLASH</strong> = <code><span class="n">70</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BACKSLASH2">
+        <strong>KEY_BACKSLASH2</strong> = <code><span class="n">71</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BACKSPACE">
+        <strong>KEY_BACKSPACE</strong> = <code><span class="n">63</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BUTTON_A">
+        <strong>KEY_BUTTON_A</strong> = <code><span class="n">124</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BUTTON_B">
+        <strong>KEY_BUTTON_B</strong> = <code><span class="n">125</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BUTTON_L1">
+        <strong>KEY_BUTTON_L1</strong> = <code><span class="n">120</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BUTTON_L2">
+        <strong>KEY_BUTTON_L2</strong> = <code><span class="n">122</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BUTTON_R1">
+        <strong>KEY_BUTTON_R1</strong> = <code><span class="n">121</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BUTTON_R2">
+        <strong>KEY_BUTTON_R2</strong> = <code><span class="n">123</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BUTTON_X">
+        <strong>KEY_BUTTON_X</strong> = <code><span class="n">112</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_BUTTON_Y">
+        <strong>KEY_BUTTON_Y</strong> = <code><span class="n">113</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_C">
+        <strong>KEY_C</strong> = <code><span class="n">3</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_CAPSLOCK">
+        <strong>KEY_CAPSLOCK</strong> = <code><span class="n">226</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_CIRCUMFLEX">
+        <strong>KEY_CIRCUMFLEX</strong> = <code><span class="n">100</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_CLOSEBRACE">
+        <strong>KEY_CLOSEBRACE</strong> = <code><span class="n">66</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_COLON2">
+        <strong>KEY_COLON2</strong> = <code><span class="n">101</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_COMMA">
+        <strong>KEY_COMMA</strong> = <code><span class="n">72</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_COMMAND">
+        <strong>KEY_COMMAND</strong> = <code><span class="n">106</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_CONVERT">
+        <strong>KEY_CONVERT</strong> = <code><span class="n">97</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_D">
+        <strong>KEY_D</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_DELETE">
+        <strong>KEY_DELETE</strong> = <code><span class="n">77</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_DOWN">
+        <strong>KEY_DOWN</strong> = <code><span class="n">85</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_DPAD_CENTER">
+        <strong>KEY_DPAD_CENTER</strong> = <code><span class="n">111</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_DPAD_DOWN">
+        <strong>KEY_DPAD_DOWN</strong> = <code><span class="n">115</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_DPAD_LEFT">
+        <strong>KEY_DPAD_LEFT</strong> = <code><span class="n">116</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_DPAD_RIGHT">
+        <strong>KEY_DPAD_RIGHT</strong> = <code><span class="n">117</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_DPAD_UP">
+        <strong>KEY_DPAD_UP</strong> = <code><span class="n">114</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_E">
+        <strong>KEY_E</strong> = <code><span class="n">5</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_END">
+        <strong>KEY_END</strong> = <code><span class="n">79</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_ENTER">
+        <strong>KEY_ENTER</strong> = <code><span class="n">67</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_EQUALS">
+        <strong>KEY_EQUALS</strong> = <code><span class="n">62</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_ESCAPE">
+        <strong>KEY_ESCAPE</strong> = <code><span class="n">59</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F">
+        <strong>KEY_F</strong> = <code><span class="n">6</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F1">
+        <strong>KEY_F1</strong> = <code><span class="n">47</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F10">
+        <strong>KEY_F10</strong> = <code><span class="n">56</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F11">
+        <strong>KEY_F11</strong> = <code><span class="n">57</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F12">
+        <strong>KEY_F12</strong> = <code><span class="n">58</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F2">
+        <strong>KEY_F2</strong> = <code><span class="n">48</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F3">
+        <strong>KEY_F3</strong> = <code><span class="n">49</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F4">
+        <strong>KEY_F4</strong> = <code><span class="n">50</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F5">
+        <strong>KEY_F5</strong> = <code><span class="n">51</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F6">
+        <strong>KEY_F6</strong> = <code><span class="n">52</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F7">
+        <strong>KEY_F7</strong> = <code><span class="n">53</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F8">
+        <strong>KEY_F8</strong> = <code><span class="n">54</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_F9">
+        <strong>KEY_F9</strong> = <code><span class="n">55</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_FULLSTOP">
+        <strong>KEY_FULLSTOP</strong> = <code><span class="n">73</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_G">
+        <strong>KEY_G</strong> = <code><span class="n">7</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_H">
+        <strong>KEY_H</strong> = <code><span class="n">8</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_HOME">
+        <strong>KEY_HOME</strong> = <code><span class="n">78</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_I">
+        <strong>KEY_I</strong> = <code><span class="n">9</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_INSERT">
+        <strong>KEY_INSERT</strong> = <code><span class="n">76</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_J">
+        <strong>KEY_J</strong> = <code><span class="n">10</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_K">
+        <strong>KEY_K</strong> = <code><span class="n">11</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_KANA">
+        <strong>KEY_KANA</strong> = <code><span class="n">96</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_KANJI">
+        <strong>KEY_KANJI</strong> = <code><span class="n">102</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_L">
+        <strong>KEY_L</strong> = <code><span class="n">12</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_LCTRL">
+        <strong>KEY_LCTRL</strong> = <code><span class="n">217</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_LEFT">
+        <strong>KEY_LEFT</strong> = <code><span class="n">82</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_LSHIFT">
+        <strong>KEY_LSHIFT</strong> = <code><span class="n">215</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_LWIN">
+        <strong>KEY_LWIN</strong> = <code><span class="n">221</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_M">
+        <strong>KEY_M</strong> = <code><span class="n">13</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_MENU">
+        <strong>KEY_MENU</strong> = <code><span class="n">223</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_MINUS">
+        <strong>KEY_MINUS</strong> = <code><span class="n">61</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_MODIFIERS">
+        <strong>KEY_MODIFIERS</strong> = <code><span class="n">215</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_N">
+        <strong>KEY_N</strong> = <code><span class="n">14</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_NOCONVERT">
+        <strong>KEY_NOCONVERT</strong> = <code><span class="n">98</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_NUMLOCK">
+        <strong>KEY_NUMLOCK</strong> = <code><span class="n">225</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_O">
+        <strong>KEY_O</strong> = <code><span class="n">15</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_OPENBRACE">
+        <strong>KEY_OPENBRACE</strong> = <code><span class="n">65</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_P">
+        <strong>KEY_P</strong> = <code><span class="n">16</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_0">
+        <strong>KEY_PAD_0</strong> = <code><span class="n">37</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_1">
+        <strong>KEY_PAD_1</strong> = <code><span class="n">38</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_2">
+        <strong>KEY_PAD_2</strong> = <code><span class="n">39</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_3">
+        <strong>KEY_PAD_3</strong> = <code><span class="n">40</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_4">
+        <strong>KEY_PAD_4</strong> = <code><span class="n">41</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_5">
+        <strong>KEY_PAD_5</strong> = <code><span class="n">42</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_6">
+        <strong>KEY_PAD_6</strong> = <code><span class="n">43</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_7">
+        <strong>KEY_PAD_7</strong> = <code><span class="n">44</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_8">
+        <strong>KEY_PAD_8</strong> = <code><span class="n">45</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_9">
+        <strong>KEY_PAD_9</strong> = <code><span class="n">46</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_ASTERISK">
+        <strong>KEY_PAD_ASTERISK</strong> = <code><span class="n">87</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_DELETE">
+        <strong>KEY_PAD_DELETE</strong> = <code><span class="n">90</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_ENTER">
+        <strong>KEY_PAD_ENTER</strong> = <code><span class="n">91</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_EQUALS">
+        <strong>KEY_PAD_EQUALS</strong> = <code><span class="n">103</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_MINUS">
+        <strong>KEY_PAD_MINUS</strong> = <code><span class="n">88</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_PLUS">
+        <strong>KEY_PAD_PLUS</strong> = <code><span class="n">89</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAD_SLASH">
+        <strong>KEY_PAD_SLASH</strong> = <code><span class="n">86</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PAUSE">
+        <strong>KEY_PAUSE</strong> = <code><span class="n">93</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PGDN">
+        <strong>KEY_PGDN</strong> = <code><span class="n">81</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PGUP">
+        <strong>KEY_PGUP</strong> = <code><span class="n">80</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_PRINTSCREEN">
+        <strong>KEY_PRINTSCREEN</strong> = <code><span class="n">92</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_Q">
+        <strong>KEY_Q</strong> = <code><span class="n">17</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_QUOTE">
+        <strong>KEY_QUOTE</strong> = <code><span class="n">69</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_R">
+        <strong>KEY_R</strong> = <code><span class="n">18</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_RCTRL">
+        <strong>KEY_RCTRL</strong> = <code><span class="n">218</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_RIGHT">
+        <strong>KEY_RIGHT</strong> = <code><span class="n">83</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_RSHIFT">
+        <strong>KEY_RSHIFT</strong> = <code><span class="n">216</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_RWIN">
+        <strong>KEY_RWIN</strong> = <code><span class="n">222</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_S">
+        <strong>KEY_S</strong> = <code><span class="n">19</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_SCROLLLOCK">
+        <strong>KEY_SCROLLLOCK</strong> = <code><span class="n">224</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_SEARCH">
+        <strong>KEY_SEARCH</strong> = <code><span class="n">110</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_SELECT">
+        <strong>KEY_SELECT</strong> = <code><span class="n">118</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_SEMICOLON">
+        <strong>KEY_SEMICOLON</strong> = <code><span class="n">68</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_SEMICOLON2">
+        <strong>KEY_SEMICOLON2</strong> = <code><span class="n">105</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_SLASH">
+        <strong>KEY_SLASH</strong> = <code><span class="n">74</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_SPACE">
+        <strong>KEY_SPACE</strong> = <code><span class="n">75</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_START">
+        <strong>KEY_START</strong> = <code><span class="n">119</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_T">
+        <strong>KEY_T</strong> = <code><span class="n">20</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_TAB">
+        <strong>KEY_TAB</strong> = <code><span class="n">64</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_THUMBL">
+        <strong>KEY_THUMBL</strong> = <code><span class="n">126</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_THUMBR">
+        <strong>KEY_THUMBR</strong> = <code><span class="n">127</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_TILDE">
+        <strong>KEY_TILDE</strong> = <code><span class="n">60</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_U">
+        <strong>KEY_U</strong> = <code><span class="n">21</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_UNKNOWN">
+        <strong>KEY_UNKNOWN</strong> = <code><span class="n">128</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_UP">
+        <strong>KEY_UP</strong> = <code><span class="n">84</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_V">
+        <strong>KEY_V</strong> = <code><span class="n">22</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_VOLUME_DOWN">
+        <strong>KEY_VOLUME_DOWN</strong> = <code><span class="n">109</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_VOLUME_UP">
+        <strong>KEY_VOLUME_UP</strong> = <code><span class="n">108</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_W">
+        <strong>KEY_W</strong> = <code><span class="n">23</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_X">
+        <strong>KEY_X</strong> = <code><span class="n">24</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_Y">
+        <strong>KEY_Y</strong> = <code><span class="n">25</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_YEN">
+        <strong>KEY_YEN</strong> = <code><span class="n">95</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="KEY_Z">
+        <strong>KEY_Z</strong> = <code><span class="n">26</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="MAX">
+        <strong>MAX</strong> = <code><span class="n">227</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
