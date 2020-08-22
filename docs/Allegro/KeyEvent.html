@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.35.1">
+<meta name="crystal_docs.project_version" content="master-dev">
+<meta name="crystal_docs.project_name" content="allegro">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="allegro">
+  <title>Allegro::KeyEvent - allegro master-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          allegro
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master-dev
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="allegro/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="allegro/Allegro" data-name="allegro">
+      <a href="../Allegro.html">Allegro</a>
+      
+        <ul>
+  
+  <li class=" " data-id="allegro/Allegro/AssertionFailed" data-name="allegro::assertionfailed">
+      <a href="../Allegro/AssertionFailed.html">AssertionFailed</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Color" data-name="allegro::color">
+      <a href="../Allegro/Color.html">Color</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Display" data-name="allegro::display">
+      <a href="../Allegro/Display.html">Display</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayCloseEvent" data-name="allegro::displaycloseevent">
+      <a href="../Allegro/DisplayCloseEvent.html">DisplayCloseEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayConnectedEvent" data-name="allegro::displayconnectedevent">
+      <a href="../Allegro/DisplayConnectedEvent.html">DisplayConnectedEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayDisconnectedEvent" data-name="allegro::displaydisconnectedevent">
+      <a href="../Allegro/DisplayDisconnectedEvent.html">DisplayDisconnectedEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayEvent" data-name="allegro::displayevent">
+      <a href="../Allegro/DisplayEvent.html">DisplayEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayExposeEvent" data-name="allegro::displayexposeevent">
+      <a href="../Allegro/DisplayExposeEvent.html">DisplayExposeEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayFoundEvent" data-name="allegro::displayfoundevent">
+      <a href="../Allegro/DisplayFoundEvent.html">DisplayFoundEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayHaltDrawingEvent" data-name="allegro::displayhaltdrawingevent">
+      <a href="../Allegro/DisplayHaltDrawingEvent.html">DisplayHaltDrawingEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayLostEvent" data-name="allegro::displaylostevent">
+      <a href="../Allegro/DisplayLostEvent.html">DisplayLostEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayOrientationEvent" data-name="allegro::displayorientationevent">
+      <a href="../Allegro/DisplayOrientationEvent.html">DisplayOrientationEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayResizeEvent" data-name="allegro::displayresizeevent">
+      <a href="../Allegro/DisplayResizeEvent.html">DisplayResizeEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayResumeDrawingEvent" data-name="allegro::displayresumedrawingevent">
+      <a href="../Allegro/DisplayResumeDrawingEvent.html">DisplayResumeDrawingEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplaySwitchedInEvent" data-name="allegro::displayswitchedinevent">
+      <a href="../Allegro/DisplaySwitchedInEvent.html">DisplaySwitchedInEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplaySwitchedOutEvent" data-name="allegro::displayswitchedoutevent">
+      <a href="../Allegro/DisplaySwitchedOutEvent.html">DisplaySwitchedOutEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Error" data-name="allegro::error">
+      <a href="../Allegro/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Event" data-name="allegro::event">
+      <a href="../Allegro/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/EventQueue" data-name="allegro::eventqueue">
+      <a href="../Allegro/EventQueue.html">EventQueue</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/EventSource" data-name="allegro::eventsource">
+      <a href="../Allegro/EventSource.html">EventSource</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/EventType" data-name="allegro::eventtype">
+      <a href="../Allegro/EventType.html">EventType</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Font" data-name="allegro::font">
+      <a href="../Allegro/Font.html">Font</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Key" data-name="allegro::key">
+      <a href="../Allegro/Key.html">Key</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Keyboard" data-name="allegro::keyboard">
+      <a href="../Allegro/Keyboard.html">Keyboard</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyboardState" data-name="allegro::keyboardstate">
+      <a href="../Allegro/KeyboardState.html">KeyboardState</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyCharEvent" data-name="allegro::keycharevent">
+      <a href="../Allegro/KeyCharEvent.html">KeyCharEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyDownEvent" data-name="allegro::keydownevent">
+      <a href="../Allegro/KeyDownEvent.html">KeyDownEvent</a>
+      
+    </li>
+  
+  <li class=" current" data-id="allegro/Allegro/KeyEvent" data-name="allegro::keyevent">
+      <a href="../Allegro/KeyEvent.html">KeyEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyModifiers" data-name="allegro::keymodifiers">
+      <a href="../Allegro/KeyModifiers.html">KeyModifiers</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/KeyUpEvent" data-name="allegro::keyupevent">
+      <a href="../Allegro/KeyUpEvent.html">KeyUpEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/SystemID" data-name="allegro::systemid">
+      <a href="../Allegro/SystemID.html">SystemID</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Timer" data-name="allegro::timer">
+      <a href="../Allegro/Timer.html">Timer</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/TimerEvent" data-name="allegro::timerevent">
+      <a href="../Allegro/TimerEvent.html">TimerEvent</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">abstract struct</span> Allegro::KeyEvent
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Allegro/KeyEvent.html">Allegro::KeyEvent</a></li><li class="superclass"><a href="../Allegro/Event.html">Allegro::Event</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Direct Known Subclasses
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../Allegro/KeyCharEvent.html">Allegro::KeyCharEvent</a></li>
+    
+      <li class="other-type"><a href="../Allegro/KeyDownEvent.html">Allegro::KeyDownEvent</a></li>
+    
+      <li class="other-type"><a href="../Allegro/KeyUpEvent.html">Allegro::KeyUpEvent</a></li>
+    
+  </ul>
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(event)-class-method" class="signature"><strong>.new</strong>(event)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#display-instance-method" class="signature"><strong>#display</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#keycode-instance-method" class="signature"><strong>#keycode</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from struct <code><a href="../Allegro/Event.html">Allegro::Event</a></code></h3>
+  
+  
+    <a href="../Allegro/Event.html#header:LibCore::EventHeader-instance-method" class="tooltip">
+      <span>header : LibCore::EventHeader</span>
+    header</a>, 
+    
+  
+    <a href="../Allegro/Event.html#source-instance-method" class="tooltip">
+      <span>source</span>
+    source</a>, 
+    
+  
+    <a href="../Allegro/Event.html#timestamp-instance-method" class="tooltip">
+      <span>timestamp</span>
+    timestamp</a>, 
+    
+  
+    <a href="../Allegro/Event.html#type-instance-method" class="tooltip">
+      <span>type</span>
+    type</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from struct <code><a href="../Allegro/Event.html">Allegro::Event</a></code></h3>
+  
+  
+    <a href="../Allegro/Event.html#new-class-method" class="tooltip">
+      <span>new</span>
+    new</a>
+    
+  
+
+
+    
+
+  <h3>Class methods inherited from struct <code><a href="../Allegro/Event.html">Allegro::Event</a></code></h3>
+  
+  
+    <a href="../Allegro/Event.html#for(event:LibCore::Event)-class-method" class="tooltip">
+      <span>for(event : LibCore::Event)</span>
+    for</a>
+    
+  
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(event)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(event)
+
+        <a class="method-permalink" href="#new(event)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="display-instance-method">
+      <div class="signature">
+        
+        def <strong>display</strong>
+
+        <a class="method-permalink" href="#display-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="keycode-instance-method">
+      <div class="signature">
+        
+        def <strong>keycode</strong>
+
+        <a class="method-permalink" href="#keycode-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

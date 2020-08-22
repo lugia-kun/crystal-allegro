@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="allegro">
-  <title>Allegro::Error - allegro master-dev</title>
+  <title>Allegro::AssertionFailed - allegro master-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -61,8 +61,13 @@
       
         <ul>
   
-  <li class=" " data-id="allegro/Allegro/AssertionFailed" data-name="allegro::assertionfailed">
+  <li class=" current" data-id="allegro/Allegro/AssertionFailed" data-name="allegro::assertionfailed">
       <a href="../Allegro/AssertionFailed.html">AssertionFailed</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Color" data-name="allegro::color">
+      <a href="../Allegro/Color.html">Color</a>
       
     </li>
   
@@ -71,7 +76,72 @@
       
     </li>
   
-  <li class=" current" data-id="allegro/Allegro/Error" data-name="allegro::error">
+  <li class=" " data-id="allegro/Allegro/DisplayCloseEvent" data-name="allegro::displaycloseevent">
+      <a href="../Allegro/DisplayCloseEvent.html">DisplayCloseEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayConnectedEvent" data-name="allegro::displayconnectedevent">
+      <a href="../Allegro/DisplayConnectedEvent.html">DisplayConnectedEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayDisconnectedEvent" data-name="allegro::displaydisconnectedevent">
+      <a href="../Allegro/DisplayDisconnectedEvent.html">DisplayDisconnectedEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayEvent" data-name="allegro::displayevent">
+      <a href="../Allegro/DisplayEvent.html">DisplayEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayExposeEvent" data-name="allegro::displayexposeevent">
+      <a href="../Allegro/DisplayExposeEvent.html">DisplayExposeEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayFoundEvent" data-name="allegro::displayfoundevent">
+      <a href="../Allegro/DisplayFoundEvent.html">DisplayFoundEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayHaltDrawingEvent" data-name="allegro::displayhaltdrawingevent">
+      <a href="../Allegro/DisplayHaltDrawingEvent.html">DisplayHaltDrawingEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayLostEvent" data-name="allegro::displaylostevent">
+      <a href="../Allegro/DisplayLostEvent.html">DisplayLostEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayOrientationEvent" data-name="allegro::displayorientationevent">
+      <a href="../Allegro/DisplayOrientationEvent.html">DisplayOrientationEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayResizeEvent" data-name="allegro::displayresizeevent">
+      <a href="../Allegro/DisplayResizeEvent.html">DisplayResizeEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayResumeDrawingEvent" data-name="allegro::displayresumedrawingevent">
+      <a href="../Allegro/DisplayResumeDrawingEvent.html">DisplayResumeDrawingEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplaySwitchedInEvent" data-name="allegro::displayswitchedinevent">
+      <a href="../Allegro/DisplaySwitchedInEvent.html">DisplaySwitchedInEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplaySwitchedOutEvent" data-name="allegro::displayswitchedoutevent">
+      <a href="../Allegro/DisplaySwitchedOutEvent.html">DisplaySwitchedOutEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Error" data-name="allegro::error">
       <a href="../Allegro/Error.html">Error</a>
       
     </li>
@@ -93,6 +163,11 @@
   
   <li class=" " data-id="allegro/Allegro/EventType" data-name="allegro::eventtype">
       <a href="../Allegro/EventType.html">EventType</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Font" data-name="allegro::font">
+      <a href="../Allegro/Font.html">Font</a>
       
     </li>
   
@@ -165,12 +240,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Allegro::Error
+  <span class="kind">class</span> Allegro::AssertionFailed
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Allegro/Error.html">Allegro::Error</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Allegro/AssertionFailed.html">Allegro::AssertionFailed</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -184,7 +259,7 @@
     Overview
   </h2>
 
-  <p>Allegro Runtime Error</p>
+  <p>Allegro Assertion Failed</p>
 
 
 
@@ -212,6 +287,23 @@
 
 
 
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(expr,file,line,func)-class-method" class="signature"><strong>.new</strong>(expr, file, line, func)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -255,6 +347,30 @@
   
 </div>
 
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(expr,file,line,func)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(expr, file, line, func)
+
+        <a class="method-permalink" href="#new(expr,file,line,func)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 

@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="allegro">
-  <title>Allegro::KeyboardState - allegro master-dev</title>
+  <title>Allegro::Font - allegro master-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -66,8 +66,78 @@
       
     </li>
   
+  <li class=" " data-id="allegro/Allegro/Color" data-name="allegro::color">
+      <a href="../Allegro/Color.html">Color</a>
+      
+    </li>
+  
   <li class=" " data-id="allegro/Allegro/Display" data-name="allegro::display">
       <a href="../Allegro/Display.html">Display</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayCloseEvent" data-name="allegro::displaycloseevent">
+      <a href="../Allegro/DisplayCloseEvent.html">DisplayCloseEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayConnectedEvent" data-name="allegro::displayconnectedevent">
+      <a href="../Allegro/DisplayConnectedEvent.html">DisplayConnectedEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayDisconnectedEvent" data-name="allegro::displaydisconnectedevent">
+      <a href="../Allegro/DisplayDisconnectedEvent.html">DisplayDisconnectedEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayEvent" data-name="allegro::displayevent">
+      <a href="../Allegro/DisplayEvent.html">DisplayEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayExposeEvent" data-name="allegro::displayexposeevent">
+      <a href="../Allegro/DisplayExposeEvent.html">DisplayExposeEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayFoundEvent" data-name="allegro::displayfoundevent">
+      <a href="../Allegro/DisplayFoundEvent.html">DisplayFoundEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayHaltDrawingEvent" data-name="allegro::displayhaltdrawingevent">
+      <a href="../Allegro/DisplayHaltDrawingEvent.html">DisplayHaltDrawingEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayLostEvent" data-name="allegro::displaylostevent">
+      <a href="../Allegro/DisplayLostEvent.html">DisplayLostEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayOrientationEvent" data-name="allegro::displayorientationevent">
+      <a href="../Allegro/DisplayOrientationEvent.html">DisplayOrientationEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayResizeEvent" data-name="allegro::displayresizeevent">
+      <a href="../Allegro/DisplayResizeEvent.html">DisplayResizeEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayResumeDrawingEvent" data-name="allegro::displayresumedrawingevent">
+      <a href="../Allegro/DisplayResumeDrawingEvent.html">DisplayResumeDrawingEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplaySwitchedInEvent" data-name="allegro::displayswitchedinevent">
+      <a href="../Allegro/DisplaySwitchedInEvent.html">DisplaySwitchedInEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplaySwitchedOutEvent" data-name="allegro::displayswitchedoutevent">
+      <a href="../Allegro/DisplaySwitchedOutEvent.html">DisplaySwitchedOutEvent</a>
       
     </li>
   
@@ -96,6 +166,11 @@
       
     </li>
   
+  <li class=" current" data-id="allegro/Allegro/Font" data-name="allegro::font">
+      <a href="../Allegro/Font.html">Font</a>
+      
+    </li>
+  
   <li class=" " data-id="allegro/Allegro/Key" data-name="allegro::key">
       <a href="../Allegro/Key.html">Key</a>
       
@@ -106,7 +181,7 @@
       
     </li>
   
-  <li class=" current" data-id="allegro/Allegro/KeyboardState" data-name="allegro::keyboardstate">
+  <li class=" " data-id="allegro/Allegro/KeyboardState" data-name="allegro::keyboardstate">
       <a href="../Allegro/KeyboardState.html">KeyboardState</a>
       
     </li>
@@ -165,12 +240,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Allegro::KeyboardState
+  <span class="kind">class</span> Allegro::Font
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Allegro/KeyboardState.html">Allegro::KeyboardState</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Allegro/Font.html">Allegro::Font</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -213,7 +288,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new(state=LibCore::KeyboardState.new)-class-method" class="signature"><strong>.new</strong>(state = <span class="t">LibCore</span><span class="t">::</span><span class="t">KeyboardState</span>.<span class="k">new</span>)</a>
+        <a href="#builtin_font:Font-class-method" class="signature"><strong>.builtin_font</strong> : Font</a>
         
       </li>
     
@@ -234,12 +309,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#is_down?(key:Key)-instance-method" class="signature"><strong>#is_down?</strong>(key : Key)</a>
+        <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_unsafe-instance-method" class="signature"><strong>#to_unsafe</strong></a>
+        <a href="#draw(text,color,x,y,flags)-instance-method" class="signature"><strong>#draw</strong>(text, color, x, y, flags)</a>
         
       </li>
     
@@ -250,16 +325,6 @@
 
 
 <div class="methods-inherited">
-  
-    
-
-
-    
-
-
-    
-
-
   
     
 
@@ -293,12 +358,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(state=LibCore::KeyboardState.new)-class-method">
+    <div class="entry-detail" id="builtin_font:Font-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(state = <span class="t">LibCore</span><span class="t">::</span><span class="t">KeyboardState</span>.<span class="k">new</span>)
+        def self.<strong>builtin_font</strong> : <a href="../Allegro/Font.html">Font</a>
 
-        <a class="method-permalink" href="#new(state=LibCore::KeyboardState.new)-class-method">#</a>
+        <a class="method-permalink" href="#builtin_font:Font-class-method">#</a>
       </div>
       
       <br/>
@@ -321,12 +386,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="is_down?(key:Key)-instance-method">
+    <div class="entry-detail" id="close-instance-method">
       <div class="signature">
         
-        def <strong>is_down?</strong>(key : <a href="../Allegro/Key.html">Key</a>)
+        def <strong>close</strong>
 
-        <a class="method-permalink" href="#is_down?(key:Key)-instance-method">#</a>
+        <a class="method-permalink" href="#close-instance-method">#</a>
       </div>
       
       <br/>
@@ -335,12 +400,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="to_unsafe-instance-method">
+    <div class="entry-detail" id="draw(text,color,x,y,flags)-instance-method">
       <div class="signature">
         
-        def <strong>to_unsafe</strong>
+        def <strong>draw</strong>(text, color, x, y, flags)
 
-        <a class="method-permalink" href="#to_unsafe-instance-method">#</a>
+        <a class="method-permalink" href="#draw(text,color,x,y,flags)-instance-method">#</a>
       </div>
       
       <br/>

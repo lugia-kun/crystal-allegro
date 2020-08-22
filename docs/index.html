@@ -66,8 +66,78 @@
       
     </li>
   
+  <li class=" " data-id="allegro/Allegro/Color" data-name="allegro::color">
+      <a href="Allegro/Color.html">Color</a>
+      
+    </li>
+  
   <li class=" " data-id="allegro/Allegro/Display" data-name="allegro::display">
       <a href="Allegro/Display.html">Display</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayCloseEvent" data-name="allegro::displaycloseevent">
+      <a href="Allegro/DisplayCloseEvent.html">DisplayCloseEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayConnectedEvent" data-name="allegro::displayconnectedevent">
+      <a href="Allegro/DisplayConnectedEvent.html">DisplayConnectedEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayDisconnectedEvent" data-name="allegro::displaydisconnectedevent">
+      <a href="Allegro/DisplayDisconnectedEvent.html">DisplayDisconnectedEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayEvent" data-name="allegro::displayevent">
+      <a href="Allegro/DisplayEvent.html">DisplayEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayExposeEvent" data-name="allegro::displayexposeevent">
+      <a href="Allegro/DisplayExposeEvent.html">DisplayExposeEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayFoundEvent" data-name="allegro::displayfoundevent">
+      <a href="Allegro/DisplayFoundEvent.html">DisplayFoundEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayHaltDrawingEvent" data-name="allegro::displayhaltdrawingevent">
+      <a href="Allegro/DisplayHaltDrawingEvent.html">DisplayHaltDrawingEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayLostEvent" data-name="allegro::displaylostevent">
+      <a href="Allegro/DisplayLostEvent.html">DisplayLostEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayOrientationEvent" data-name="allegro::displayorientationevent">
+      <a href="Allegro/DisplayOrientationEvent.html">DisplayOrientationEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayResizeEvent" data-name="allegro::displayresizeevent">
+      <a href="Allegro/DisplayResizeEvent.html">DisplayResizeEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplayResumeDrawingEvent" data-name="allegro::displayresumedrawingevent">
+      <a href="Allegro/DisplayResumeDrawingEvent.html">DisplayResumeDrawingEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplaySwitchedInEvent" data-name="allegro::displayswitchedinevent">
+      <a href="Allegro/DisplaySwitchedInEvent.html">DisplaySwitchedInEvent</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/DisplaySwitchedOutEvent" data-name="allegro::displayswitchedoutevent">
+      <a href="Allegro/DisplaySwitchedOutEvent.html">DisplaySwitchedOutEvent</a>
       
     </li>
   
@@ -93,6 +163,11 @@
   
   <li class=" " data-id="allegro/Allegro/EventType" data-name="allegro::eventtype">
       <a href="Allegro/EventType.html">EventType</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Font" data-name="allegro::font">
+      <a href="Allegro/Font.html">Font</a>
       
     </li>
   
@@ -197,7 +272,43 @@
   </svg>
 </a>Usage</h2>
 
-<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;allegro&quot;</span></code></pre>
+<h3><a id="vivace-example" class="anchor" href="#vivace-example">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Vivace Example</h3>
+
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;allegro&quot;</span>
+
+<span class="t">Allegro</span>.initialize
+<span class="t">Allegro</span><span class="t">::</span><span class="t">Keyboard</span>.initialize
+
+timer <span class="o">=</span> <span class="t">Allegro</span><span class="t">::</span><span class="t">Timer</span>.<span class="k">for</span>(<span class="n">1.0</span> <span class="o">/</span> <span class="n">30.0</span>)
+display <span class="o">=</span> <span class="t">Allegro</span><span class="t">::</span><span class="t">Display</span>.<span class="k">new</span>(<span class="n">320</span>, <span class="n">240</span>)
+font <span class="o">=</span> <span class="t">Allegro</span><span class="t">::</span><span class="t">Font</span>.builtin_font
+
+queue <span class="o">=</span> <span class="t">Allegro</span><span class="t">::</span><span class="t">EventQueue</span>.<span class="k">new</span>
+queue.register_keyboard_events
+queue.register(display)
+queue.register(timer)
+
+timer.start
+redraw <span class="o">=</span> <span class="n">false</span>
+loop <span class="k">do</span>
+  event <span class="o">=</span> queue.wait_for_event
+  <span class="k">case</span> event
+  <span class="k">when</span> <span class="t">Allegro</span><span class="t">::</span><span class="t">KeyDownEvent</span>, <span class="t">Allegro</span><span class="t">::</span><span class="t">DisplayCloseEvent</span>
+    <span class="k">break</span>
+  <span class="k">when</span> <span class="t">Allegro</span><span class="t">::</span><span class="t">TimerEvent</span>
+    redraw <span class="o">=</span> <span class="n">true</span>
+  <span class="k">end</span>
+  <span class="k">if</span> redraw && queue.is_empty?
+    <span class="t">Allegro</span><span class="t">::</span><span class="t">Display</span>.clear_to_color(<span class="t">Allegro</span><span class="t">::</span><span class="t">Color</span>.<span class="k">new</span>(<span class="n">0</span>, <span class="n">0</span>, <span class="n">0</span>))
+    font.draw(<span class="s">&quot;Hello, World!&quot;</span>, <span class="t">Allegro</span><span class="t">::</span><span class="t">Color</span>.<span class="k">new</span>(<span class="n">255</span>, <span class="n">255</span>, <span class="n">255</span>), <span class="n">0</span>, <span class="n">0</span>, <span class="n">0</span>)
+    <span class="t">Allegro</span><span class="t">::</span><span class="t">Display</span>.flip
+    redraw <span class="o">=</span> <span class="n">false</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
 
 <p><span class="flag orange">TODO</span>  Write usage instructions here</p>
 
