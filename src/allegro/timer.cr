@@ -1,4 +1,3 @@
-
 module Allegro
   class Timer
     def self.for(seconds : Float | Int)

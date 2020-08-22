@@ -1,15 +1,16 @@
 require "./allegro/lib.cr"
 
 require "./allegro/display.cr"
-require "./allegro/event.cr"
+require "./allegro/keyboard.cr"
 require "./allegro/timer.cr"
+require "./allegro/event.cr"
 
 # Allegro 5, game engine
 module Allegro
   # Version number of the crystal binding library
   VERSION = "0.1.0"
 
-  # Allegro Error class
+  # Allegro Runtime Error
   class Error < Exception
   end
 
@@ -43,6 +44,8 @@ module Allegro
   #       # Some additional process before running user code
   #       Crystal.main_user_code(ac, av)
   #       # Some additional process after running user code
+  #     rescue e : Exception
+  #       # Catch up unhandled exceptions
   #     end
   #     # Some additional process after cleanup Crystal
   #     # (note: Allegro is already cleaned up here too)
@@ -119,6 +122,7 @@ end
       Crystal.main do
         Crystal.main_user_code(ac, av)
       rescue e : Exception
+        STDERR << "Unhandled exception: "
         e.inspect_with_backtrace(STDERR)
         1
       end
@@ -128,16 +132,3 @@ end
 {% if !flag?(:no_auto_allegro_init) %}
   Allegro.initialize
 {% end %}
-
-timer = Allegro::Timer.for(1.seconds)
-queue = Allegro::EventQueue.new
-queue.register(timer)
-
-display = Allegro::Display.new(320, 240)
-
-timer.start
-loop do
-  event = queue.wait_for_event
-  pp! event
-  break
-end

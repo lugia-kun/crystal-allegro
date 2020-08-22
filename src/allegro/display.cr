@@ -1,4 +1,3 @@
-
 module Allegro
   class Display
     @ptr : LibCore::Display
