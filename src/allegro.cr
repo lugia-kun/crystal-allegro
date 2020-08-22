@@ -1,9 +1,12 @@
 require "./allegro/lib.cr"
+require "./allegro/lib_font.cr"
 
 require "./allegro/display.cr"
 require "./allegro/keyboard.cr"
 require "./allegro/timer.cr"
 require "./allegro/event.cr"
+
+require "./allegro/font.cr"
 
 # Allegro 5, game engine
 module Allegro
@@ -66,9 +69,6 @@ module Allegro
   # Initialize Allegro library.
   #
   # It is safe to call this method multiple times.
-  #
-  # This method is automatically called unless build with
-  # `-Dno_auto_allegro_init`
   def self.initialize
     if !LibCore.al_install_system(VERSION_INT, AT_EXIT)
       raise Error.new("Failed to initialize Allegro")
@@ -128,7 +128,4 @@ end
       end
     end
   end
-{% end %}
-{% if !flag?(:no_auto_allegro_init) %}
-  Allegro.initialize
 {% end %}

@@ -1,4 +1,3 @@
-
 module Allegro
   struct KeyboardState
     @state = LibCore::KeyboardState
