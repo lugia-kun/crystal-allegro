@@ -41,9 +41,8 @@ module Allegro
     end
 
     def draw(text : String, color, x, y, flags)
-      ustr = StaticArray(StaticUString, 1).new { StaticUString.new(text) }
-      p ustr[0].to_s
-      LibFont.al_draw_ustr(@ptr, color, x, y, flags, ustr[0])
+      ustr = StaticUString.new(text)
+      LibFont.al_draw_ustr(@ptr, color, x, y, flags, ustr)
     end
 
     # Explicitly destroys the underlying font
