@@ -87,6 +87,7 @@ module Allegro
     alias SizeT = LibC::SizeT
     alias OffT = LibC::OffT
     alias TimeT = LibC::TimeT
+
     type Bitmap = Pointer(Void)
     type Config = Pointer(Void)
     type ConfigSection = Pointer(Void)
@@ -978,6 +979,89 @@ module Allegro
     fun al_get_timer_speed(Timer) : Double
     fun al_set_timer_speed(Timer, speed : Double) : Void
     fun al_get_timer_event_source(Timer) : EventSource
+
+    # UTF-8
+
+    struct TabString
+      mlen : Int
+      slen : Int
+      data : UInt8*
+    end
+
+    alias UstrInfo = TabString
+
+    fun al_ustr_new(UInt8*) : Ustr
+    fun al_ustr_new_from_buffer(UInt8*, SizeT) : Ustr
+    fun al_ustr_newf(fmt : UInt8*, ...) : Ustr
+    fun al_ustr_free(Ustr) : Void
+    fun al_cstr(Ustr) : UInt8*
+    fun al_ustr_to_buffer(Ustr, buffer : UInt8*, size : Int) : Void
+    fun al_cstr_dup(Ustr) : UInt8*
+    fun al_ustr_dup(Ustr) : Ustr
+    fun al_ustr_dup_substr(Ustr, start_pos : Int, end_pos : Int) : Ustr
+    fun al_ustr_empty_string : Ustr
+    fun al_ref_cstr(UstrInfo*, string : UInt8*) : Ustr
+    fun al_ref_buffer(UstrInfo*, s : UInt8*, size : SizeT) : Ustr
+    fun al_ref_ustr(UstrInfo*, Ustr, start_pos : Int, end_pos : Int) : Ustr
+
+    fun al_ustr_size(Ustr) : SizeT
+    fun al_ustr_length(Ustr) : SizeT
+    fun al_ustr_offset(Ustr, index : Int) : Int
+    fun al_ustr_next(Ustr, pos : Int*) : Bool
+    fun al_ustr_prev(Ustr, pos : Int*) : Bool
+    fun al_ustr_get(Ustr, pos : Int) : Int32
+    fun al_ustr_get_next(Ustr, pos : Int*) : Int32
+    fun al_ustr_get_prev(Ustr, pos : Int*) : Int32
+
+    fun al_ustr_insert(Ustr, pos : Int, us2 : Ustr) : Bool
+    fun al_ustr_insert_cstr(Ustr, pos : Int, s : UInt8*) : Bool
+    fun al_ustr_insert_chr(Ustr, pos : Int, c : Int32) : SizeT
+
+    fun al_ustr_append(Ustr, Ustr) : Bool
+    fun al_ustr_append_cstr(Ustr, UInt8*) : Bool
+    fun al_ustr_appendf(Ustr, fmt : UInt8*, ...) : Bool
+    fun al_ustr_vappendf(Ustr, fmt : UInt8*, ap : LibC::VaList) : Bool
+
+    fun al_ustr_remove_chr(Ustr, pos : Int) : Bool
+    fun al_ustr_remove_range(Ustr, start_pos : Int, end_pos : Int) : Bool
+    fun al_ustr_truncate(Ustr, start_pos : Int) : Bool
+    fun al_ustr_ltrim_ws(Ustr) : Bool
+    fun al_ustr_rtrim_ws(Ustr) : Bool
+    fun al_ustr_trim_ws(Ustr) : Bool
+
+    fun al_ustr_assign(Ustr, Ustr) : Bool
+    fun al_ustr_assign_substr(Ustr, Ustr, start_pos : Int, end_pos : Int) : Bool
+    fun al_ustr_set_chr(Ustr, start_pos : Int, end_pos : Int)
+    fun al_ustr_replace_range(Ustr, start_pos : Int, end_pos : Int, us2 : Ustr) : Bool
+    fun al_ustr_find_chr(Ustr, start_pos : Int, c : Int32) : Int
+    fun al_ustr_rfind_chr(Ustr, end_pos : Int, c : Int32) : Int
+    fun al_ustr_find_set(Ustr, start_pos : Int, accept : Ustr) : Int
+    fun al_ustr_find_set_cstr(Ustr, start_pos : Int, accept : UInt8*) : Int
+    fun al_ustr_find_cset(Ustr, start_pos : Int, reject : Ustr) : Int
+    fun al_ustr_find_cset_cstr(Ustr, start_pos : Int, reject : UInt8*) : Int
+    fun al_ustr_find_str(Ustr, start_pos : Int, needle : Ustr) : Int
+    fun al_ustr_find_cstr(Ustr, start_pos : Int, needle : UInt8*) : Int
+    fun al_ustr_rfind_str(Ustr, end_pos : Int, needle : Ustr) : Int
+    fun al_ustr_rfind_cstr(Ustr, end_pos : Int, needle : UInt8*) : Int
+    fun al_ustr_find_replace(Ustr, find : Ustr, replace : Ustr) : Bool
+    fun al_ustr_find_replace_cstr(Ustr, find : UInt8*, replace : UInt8*) : Bool
+
+    fun al_ustr_equal(Ustr, Ustr) : Bool
+    fun al_ustr_compare(Ustr, Ustr) : Int
+    fun al_ustr_ncompare(Ustr, Ustr, n : Int) : Int
+    fun al_ustr_has_prefix(Ustr, Ustr) : Bool
+    fun al_ustr_has_prefix_cstr(Ustr, UInt8*) : Bool
+    fun al_ustr_has_suffix(Ustr, Ustr) : Bool
+    fun al_ustr_has_suffix_cstr(Ustr, UInt8*) : Bool
+
+    fun al_ustr_new_from_utf16(s : UInt16*) : Ustr
+    fun al_ustr_size_utf16(Ustr) : SizeT
+    fun al_ustr_encode_utf16(Ustr, UInt16*, n : SizeT) : SizeT
+
+    fun al_utf8_width(c : Int32) : SizeT
+    fun al_utf8_encode(UInt8*, c : Int32) : SizeT
+    fun al_utf16_width(c : Int) : SizeT
+    fun al_utf16_enocde(UInt16*, c : Int32) : SizeT
   end
 
   # :nodoc:

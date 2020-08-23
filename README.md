@@ -1,24 +1,30 @@
 # crystal-allegro
 
-TODO: Currently nothing is implemented.
+Crystal binding of Allegro 5.x game library.
+
+Because Allegro is C library, no extra process exists other than
+building a regular Crystal app.
 
 ## Installation
 
-1. Install development files of Allegro 5.
-
+1. Install development files (header files, pkg-config files, and
+   libraries) of Allegro 5.
 2. Add the dependency to your `shard.yml`:
-
    ```yaml
    dependencies:
      allegro:
        github: lugia-kun/crystal-allegro
    ```
-
 3. Run `shards install`
+
+We are using GCC or Clang (or any compiler supports `-dM` option which
+lists defined macros instead of compile) to obtain specific values of
+macros defined by Allegro library. The compiler to be used for this
+can be changed using the enviroment variable `CRYSTAL_ALLEGRO_CC`.
 
 ## Usage
 
-### Vivace Example
+### Basic Example
 
 ```crystal
 require "allegro"
@@ -53,9 +59,7 @@ loop do
   end
 end
 ```
-![Screenshot of Vivace example](./examples/vivace.png)
-
-TODO: Write usage instructions here
+![Screenshot of Basic example](./examples/vivace.png)
 
 ## Development
 

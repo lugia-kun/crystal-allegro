@@ -1,4 +1,4 @@
-# Example imitates Allegro Vivace example
+# Example imitates Allegro Vivace Basic example
 #
 # https://github.com/liballeg/allegro_wiki/wiki/Allegro-Vivace%3A-Basic-game-structure
 

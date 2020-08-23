@@ -1,12 +1,15 @@
 require "./allegro/lib.cr"
 require "./allegro/lib_font.cr"
+require "./allegro/lib_image.cr"
 
 require "./allegro/display.cr"
 require "./allegro/keyboard.cr"
 require "./allegro/timer.cr"
 require "./allegro/event.cr"
+require "./allegro/ustring.cr"
 
 require "./allegro/font.cr"
+require "./allegro/image.cr"
 
 # Allegro 5, game engine
 module Allegro
@@ -91,16 +94,19 @@ module Allegro
     LibCore.al_uninstall_system
   end
 
-  # Runtime version of Allegro
-  #
-  # Returns tuple of Major, Minor, Revision and Release versions
-  def self.version : Tuple(UInt32, UInt32, UInt32, UInt32)
-    ver = LibCore.al_get_allegro_version
+  def self.version_to_tuple(ver : UInt32)
     maj = ver >> 24
     min = (ver >> 16) & 255
     rev = (ver >> 8) & 255
     rel = ver & 255
     {maj, min, rev, rel}
+  end
+
+  # Runtime version of Allegro
+  #
+  # Returns tuple of Major, Minor, Revision and Release versions
+  def self.version : Tuple(UInt32, UInt32, UInt32, UInt32)
+    version_to_tuple(LibCore.al_get_allegro_version)
   end
 
   # :nodoc:

@@ -18,6 +18,15 @@ module Allegro
       advance : Int
     end
 
+    enum FontFlags : Int
+      NO_KERNING    = -1
+      ALIGN_LEFT    =  0
+      ALIGN_CENTRE  =  1
+      ALIGN_CENTER  =  1
+      ALIGN_RIGHT   =  2
+      ALIGN_INTEGER =  4
+    end
+
     fun al_init_font_addon : Bool
     fun al_is_font_addon_initialized : Bool
     fun al_shutdown_font_addon : Void
@@ -44,4 +53,6 @@ module Allegro
 
     fun al_create_builtin_font : Font
   end
+
+  alias FontFlags = LibFont::FontFlags
 end
