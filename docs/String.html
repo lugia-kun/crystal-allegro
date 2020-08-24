@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="allegro">
-  <title>Top Level Namespace - allegro master-dev</title>
+  <title>String - allegro master-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "";
   </script>
@@ -51,7 +51,7 @@
   <div class="types-list">
     <ul>
   
-  <li class=" current" data-id="allegro/toplevel" data-name="top level namespace">
+  <li class=" " data-id="allegro/toplevel" data-name="top level namespace">
       <a href="toplevel.html">Top Level Namespace</a>
       
     </li>
@@ -296,7 +296,7 @@
       
     </li>
   
-  <li class=" " data-id="allegro/String" data-name="string">
+  <li class=" current" data-id="allegro/String" data-name="string">
       <a href="String.html">String</a>
       
     </li>
@@ -310,17 +310,155 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  Top Level Namespace
+  <span class="kind">class</span> String
 
 </h1>
 
 
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="String.html">String</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>A <code><a href="String.html">String</a></code> represents an immutable sequence of UTF-8 characters.</p>
+
+<p>A <code><a href="String.html">String</a></code> is typically created with a string literal, enclosing UTF-8 characters
+in double quotes:</p>
+
+<pre><code><span class="s">&quot;hello world&quot;</span></code></pre>
+
+<p>A backslash can be used to denote some characters inside the string:</p>
+
+<pre><code><span class="s">&quot;\&quot;&quot;</span> <span class="c"># double quote</span>
+<span class="s">&quot;\\&quot;</span> <span class="c"># backslash</span>
+<span class="s">&quot;\e&quot;</span> <span class="c"># escape</span>
+<span class="s">&quot;\f&quot;</span> <span class="c"># form feed</span>
+<span class="s">&quot;\n&quot;</span> <span class="c"># newline</span>
+<span class="s">&quot;\r&quot;</span> <span class="c"># carriage return</span>
+<span class="s">&quot;\t&quot;</span> <span class="c"># tab</span>
+<span class="s">&quot;\v&quot;</span> <span class="c"># vertical tab</span></code></pre>
+
+<p>You can use a backslash followed by an <em>u</em> and four hexadecimal characters to denote a unicode codepoint written:</p>
+
+<pre><code><span class="s">&quot;\u0041&quot;</span> <span class="c"># == &quot;A&quot;</span></code></pre>
+
+<p>Or you can use curly braces and specify up to six hexadecimal numbers (0 to 10FFFF):</p>
+
+<pre><code><span class="s">&quot;\u{41}&quot;</span> <span class="c"># == &quot;A&quot;</span></code></pre>
+
+<p>A string can span multiple lines:</p>
+
+<pre><code><span class="s">&quot;hello
+      world&quot;</span> <span class="c"># same as &quot;hello\n      world&quot;</span></code></pre>
+
+<p>Note that in the above example trailing and leading spaces, as well as newlines,
+end up in the resulting string. To avoid this, you can split a string into multiple lines
+by joining multiple literals with a backslash:</p>
+
+<pre><code><span class="s">&quot;hello &quot;</span> \
+<span class="s">&quot;world, &quot;</span> \
+<span class="s">&quot;no newlines&quot;</span> <span class="c"># same as &quot;hello world, no newlines&quot;</span></code></pre>
+
+<p>Alternatively, a backslash followed by a newline can be inserted inside the string literal:</p>
+
+<pre><code><span class="s">&quot;hello \
+     world, \
+     no newlines&quot;</span> <span class="c"># same as &quot;hello world, no newlines&quot;</span></code></pre>
+
+<p>In this case, leading whitespace is not included in the resulting string.</p>
+
+<p>If you need to write a string that has many double quotes, parentheses, or similar
+characters, you can use alternative literals:</p>
+
+<pre><code><span class="c"># Supports double quotes and nested parentheses</span>
+<span class="s">%(hello (&quot;world&quot;))</span> <span class="c"># same as &quot;hello (\&quot;world\&quot;)&quot;</span>
+
+<span class="c"># Supports double quotes and nested brackets</span>
+<span class="s">%[hello [&quot;world&quot;]]</span> <span class="c"># same as &quot;hello [\&quot;world\&quot;]&quot;</span>
+
+<span class="c"># Supports double quotes and nested curlies</span>
+<span class="s">%{hello {&quot;world&quot;}}</span> <span class="c"># same as &quot;hello {\&quot;world\&quot;}&quot;</span>
+
+<span class="c"># Supports double quotes and nested angles</span>
+<span class="s">%&lt;hello &lt;&quot;world&quot;&gt;&gt;</span> <span class="c"># same as &quot;hello &lt;\&quot;world\&quot;&gt;&quot;</span></code></pre>
+
+<p>To create a <code><a href="String.html">String</a></code> with embedded expressions, you can use string interpolation:</p>
+
+<pre><code>a <span class="o">=</span> <span class="n">1</span>
+b <span class="o">=</span> <span class="n">2</span>
+<span class="s">&quot;sum = </span><span class="i">#{</span>a <span class="o">+</span> b<span class="i">}</span><span class="s">&quot;</span> <span class="c"># &quot;sum = 3&quot;</span></code></pre>
+
+<p>This ends up invoking <code>Object#to_s(IO)</code> on each expression enclosed by <code>#{...}</code>.</p>
+
+<p>If you need to dynamically build a string, use <code>String#build</code> or <code>IO::Memory</code>.</p>
+
+<h3><a id="non-utf-8-valid-strings" class="anchor" href="#non-utf-8-valid-strings">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Non UTF-8 valid strings</h3>
+
+<p>String might end up being conformed of bytes which are an invalid
+byte sequence according to UTF-8. This can happen if the string is created
+via one of the constructors that accept bytes, or when getting a string
+from <code>String.build</code> or <code>IO::Memory</code>. No exception will be raised, but
+invalid byte sequences, when asked as chars, will use the unicode replacement
+char (value 0xFFFD). For example:</p>
+
+<pre><code><span class="c"># here 255 is not a valid byte value in the UTF-8 encoding</span>
+string <span class="o">=</span> <span class="t">String</span>.<span class="k">new</span>(<span class="t">Bytes</span>[<span class="n">255</span>, <span class="n">97</span>])
+string.valid_encoding? <span class="c"># =&gt; false</span>
+
+<span class="c"># The first char here is the unicode replacement char</span>
+string.chars <span class="c"># =&gt; [&#39;�&#39;, &#39;a&#39;]</span></code></pre>
+
+<p>One can also create strings with specific byte value in them by
+using octal and hexadecimal escape sequences:</p>
+
+<pre><code><span class="c"># Octal escape sequences</span>
+<span class="s">&quot;\101&quot;</span> <span class="c"># # =&gt; &quot;A&quot;</span>
+<span class="s">&quot;\12&quot;</span>  <span class="c"># # =&gt; &quot;\n&quot;</span>
+<span class="s">&quot;\1&quot;</span>   <span class="c"># string with one character with code point 1</span>
+<span class="s">&quot;\377&quot;</span> <span class="c"># string with one byte with value 255</span>
+
+<span class="c"># Hexadecimal escape sequences</span>
+<span class="s">&quot;\x41&quot;</span> <span class="c"># # =&gt; &quot;A&quot;</span>
+<span class="s">&quot;\xFF&quot;</span> <span class="c"># string with one byte with value 255</span></code></pre>
+
+<p>The reason for allowing strings that don't have a valid UTF-8 sequence
+is that the world is full of content that isn't properly encoded,
+and having a program raise an exception or stop because of this
+is not good. It's better if programs are more resilient, but
+show a replacement character when there's an error in incoming data.</p>
 
 
 
 
 
-
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type">Comparable(<a href="Allegro/AllocatedUString.html">Allegro::AllocatedUString</a> | <a href="Allegro/EmptyUString.html">Allegro::EmptyUString</a> | <a href="Allegro/StaticUString.html">Allegro::StaticUString</a>)</li>
+    
+      <li class="other-type">Comparable(<a href="String.html">String</a>)</li>
+    
+  </ul>
 
 
 
@@ -343,58 +481,26 @@
 
 
 
-  
-    <h2>
-      <a id="constant-summary" class="anchor" href="#constant-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-      Constant Summary
-    </h2>
-  
-  <dl>
-    
-      <dt class="entry-const" id="CC">
-        <strong>CC</strong> = <code><span class="t">ENV</span>[<span class="s">&quot;CRYSTAL_ALLEGRO_CC&quot;</span>]? || <span class="s">&quot;gcc&quot;</span></code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="CFLAGS_BASE">
-        <strong>CFLAGS_BASE</strong> = <code><span class="t">ARGV</span>.shift</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="CFLAGS_OVERRIDE">
-        <strong>CFLAGS_OVERRIDE</strong> = <code><span class="t">ENV</span>[<span class="s">&quot;CRYSTAL_ALLEGRO_CFLAGS&quot;</span>]?</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="HeaderFile">
-        <strong>HeaderFile</strong> = <code><span class="t">ARGV</span>.shift</code>
-      </dt>
-      
-    
-  </dl>
+
 
 
 
 
 
   <h2>
-    <a id="method-summary" class="anchor" href="#method-summary">
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Method Summary
+    Instance Method Summary
   </h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#main(argc:Int32,argv:Pointer(Pointer(UInt8)))-class-method" class="signature"><strong>main</strong>(argc : Int32, argv : Pointer(Pointer(UInt8)))</a>
+        <a href="#(other:Allegro::AnyUString)-instance-method" class="signature"><strong>#<=></strong>(other : Allegro::AnyUString)</a>
         
-          <div class="summary"><p>Main function that acts as C's main function.</p></div>
+          <div class="summary"><p>The comparison operator.</p></div>
         
       </li>
     
@@ -404,38 +510,92 @@
 
 
 
-
-
 <div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
   
 </div>
 
 
 
 
+
+
   <h2>
-    <a id="method-detail" class="anchor" href="#method-detail">
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Method Detail
+    Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="main(argc:Int32,argv:Pointer(Pointer(UInt8)))-class-method">
+    <div class="entry-detail" id="(other:Allegro::AnyUString)-instance-method">
       <div class="signature">
         
-        def <strong>main</strong>(argc : Int32, argv : Pointer(Pointer(UInt8)))
+        def <strong><=></strong>(other : <a href="Allegro/AnyUString.html">Allegro::AnyUString</a>)
 
-        <a class="method-permalink" href="#main(argc:Int32,argv:Pointer(Pointer(UInt8)))-class-method">#</a>
+        <a class="method-permalink" href="#(other:Allegro::AnyUString)-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Main function that acts as C's main function.
-Invokes <code>Crystal.main</code>.</p>
+            <div class="doc-inherited">
+              Description copied from module Comparable(<a href="Allegro/AllocatedUString.html">Allegro::AllocatedUString</a> | <a href="Allegro/EmptyUString.html">Allegro::EmptyUString</a> | <a href="Allegro/StaticUString.html">Allegro::StaticUString</a>)
+            </div>
+          
+          <p>The comparison operator. Returns <code>0</code> if the two objects are equal,
+a negative number if this object is considered less than <em>other</em>,
+a positive number if this object is considered greter than <em>other</em>,
+or <code>nil</code> if the two objects are not comparable.</p>
 
-<p>Can be redefined. See <code>Crystal.main</code> for examples.</p>
+<p>Subclasses define this method to provide class-specific ordering.</p>
+
+<p>The comparison operator is usually used to sort values:</p>
+
+<pre><code><span class="c"># Sort in a descending way:</span>
+[<span class="n">3</span>, <span class="n">1</span>, <span class="n">2</span>].sort { <span class="o">|</span>x, y<span class="o">|</span> y <span class="o">&lt;=&gt;</span> x } <span class="c"># =&gt; [3, 2, 1]</span>
+
+<span class="c"># Sort in an ascending way:</span>
+[<span class="n">3</span>, <span class="n">1</span>, <span class="n">2</span>].sort { <span class="o">|</span>x, y<span class="o">|</span> x <span class="o">&lt;=&gt;</span> y } <span class="c"># =&gt; [1, 2, 3]</span></code></pre>
         </div>
       
       <br/>
@@ -444,8 +604,6 @@ Invokes <code>Crystal.main</code>.</p>
       </div>
     </div>
   
-
-
 
 
 

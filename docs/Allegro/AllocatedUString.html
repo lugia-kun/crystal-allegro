@@ -18,7 +18,7 @@
 </svg>
 
   <meta id="repository-name" content="allegro">
-  <title>Allegro::Timer - allegro master-dev</title>
+  <title>Allegro::AllocatedUString - allegro master-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -61,7 +61,7 @@
       
         <ul>
   
-  <li class=" " data-id="allegro/Allegro/AllocatedUString" data-name="allegro::allocatedustring">
+  <li class=" current" data-id="allegro/Allegro/AllocatedUString" data-name="allegro::allocatedustring">
       <a href="../Allegro/AllocatedUString.html">AllocatedUString</a>
       
     </li>
@@ -251,7 +251,7 @@
       
     </li>
   
-  <li class=" current" data-id="allegro/Allegro/Timer" data-name="allegro::timer">
+  <li class=" " data-id="allegro/Allegro/Timer" data-name="allegro::timer">
       <a href="../Allegro/Timer.html">Timer</a>
       
     </li>
@@ -310,19 +310,47 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Allegro::Timer
+  <span class="kind">class</span> Allegro::AllocatedUString
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Allegro/Timer.html">Allegro::Timer</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Allegro/AllocatedUString.html">Allegro::AllocatedUString</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Allegro-friendly UTF-8 String</p>
+
+<p>This is used for that needs deallocation, or generated string by
+Allegro library</p>
 
 
 
 
 
-
-
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../Allegro/UString.html">Allegro::UString</a></li>
+    
+  </ul>
 
 
 
@@ -347,29 +375,29 @@
 
 
 
-
-
   <h2>
-    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+    <a id="constructors" class="anchor" href="#constructors">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Class Method Summary
+    Constructors
   </h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#for(seconds:Float%7CInt)-class-method" class="signature"><strong>.for</strong>(seconds : Float | Int)</a>
+        <a href="#from(string:String):AllocatedUString-class-method" class="signature"><strong>.from</strong>(string : String) : AllocatedUString</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#for(span:Time::Span)-class-method" class="signature"><strong>.for</strong>(span : Time::Span)</a>
+        <a href="#new(ptr)-class-method" class="signature"><strong>.new</strong>(ptr)</a>
         
       </li>
     
   </ul>
+
+
 
 
 
@@ -384,17 +412,23 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#add_to_count(diff)-instance-method" class="signature"><strong>#add_to_count</strong>(diff)</a>
+        <a href="#%3C%3C(str:AnyUString)-instance-method" class="signature"><strong>#<<</strong>(str : AnyUString)</a>
+        
+          <div class="summary"><p>Append string</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#count-instance-method" class="signature"><strong>#count</strong></a>
+        <a href="#%3C%3C(str:String)-instance-method" class="signature"><strong>#<<</strong>(str : String)</a>
+        
+          <div class="summary"><p>Append string</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#count=(value)-instance-method" class="signature"><strong>#count=</strong>(value)</a>
+        <a href="#%3C%3C(chr:Char)-instance-method" class="signature"><strong>#<<</strong>(chr : Char)</a>
+        
+          <div class="summary"><p>Append single char</p></div>
         
       </li>
     
@@ -404,39 +438,9 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#resume-instance-method" class="signature"><strong>#resume</strong></a>
+        <a href="#to_unsafe:Allegro::LibCore::Ustr-instance-method" class="signature"><strong>#to_unsafe</strong> : Allegro::LibCore::Ustr</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#speed-instance-method" class="signature"><strong>#speed</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#speed=(value)-instance-method" class="signature"><strong>#speed=</strong>(value)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#start-instance-method" class="signature"><strong>#start</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#started?:Bool-instance-method" class="signature"><strong>#started?</strong> : Bool</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#stop-instance-method" class="signature"><strong>#stop</strong></a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#to_unsafe:Allegro::LibCore::Timer-instance-method" class="signature"><strong>#to_unsafe</strong> : Allegro::LibCore::Timer</a>
-        
-          <div class="summary"><p>Returns pointer to <code>ALLEGRO_TIMER</code> for using Allegro API directly</p></div>
+          <div class="summary"><p>Returns pointer to <code>ALLEGRO_USTR</code></p></div>
         
       </li>
     
@@ -447,6 +451,129 @@
 
 
 <div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from module <code><a href="../Allegro/UString.html">Allegro::UString</a></code></h3>
+  
+  
+    <a href="../Allegro/UString.html#(str:String)-instance-method" class="tooltip">
+      <span><=>(str : String)<br/><=>(str : AnyUString)</span>
+    <=></a>, 
+    
+  
+    <a href="../Allegro/UString.html#==(str:String)-instance-method" class="tooltip">
+      <span>==(str : String)<br/>==(str : AnyUString)</span>
+    ==</a>, 
+    
+  
+    <a href="../Allegro/UString.html#=~(regex:Regex)-instance-method" class="tooltip">
+      <span>=~(regex : Regex)</span>
+    =~</a>, 
+    
+  
+    <a href="../Allegro/UString.html#[](range:Range):AllocatedUString-instance-method" class="tooltip">
+      <span>[](range : Range) : AllocatedUString<br/>[](index : Int32) : Char<br/>[](start : Int, count : Int) : AllocatedUString</span>
+    []</a>, 
+    
+  
+    <a href="../Allegro/UString.html#[]?(start:Int,count:Int):AllocatedUString?-instance-method" class="tooltip">
+      <span>[]?(start : Int, count : Int) : AllocatedUString?<br/>[]?(index : Int32) : Char?<br/>[]?(range : Range) : AllocatedUString?</span>
+    []?</a>, 
+    
+  
+    <a href="../Allegro/UString.html#byte_at(index,&)-instance-method" class="tooltip">
+      <span>byte_at(index, &)<br/>byte_at(index)</span>
+    byte_at</a>, 
+    
+  
+    <a href="../Allegro/UString.html#byte_at?(index)-instance-method" class="tooltip">
+      <span>byte_at?(index)</span>
+    byte_at?</a>, 
+    
+  
+    <a href="../Allegro/UString.html#byte_index(byte:Int,offset=0):Int32?-instance-method" class="tooltip">
+      <span>byte_index(byte : Int, offset = <span class="n">0</span>) : Int32?</span>
+    byte_index</a>, 
+    
+  
+    <a href="../Allegro/UString.html#bytes-instance-method" class="tooltip">
+      <span>bytes</span>
+    bytes</a>, 
+    
+  
+    <a href="../Allegro/UString.html#bytesize-instance-method" class="tooltip">
+      <span>bytesize</span>
+    bytesize</a>, 
+    
+  
+    <a href="../Allegro/UString.html#dup:AllocatedUString-instance-method" class="tooltip">
+      <span>dup : AllocatedUString</span>
+    dup</a>, 
+    
+  
+    <a href="../Allegro/UString.html#size-instance-method" class="tooltip">
+      <span>size</span>
+    size</a>, 
+    
+  
+    <a href="../Allegro/UString.html#to_s-instance-method" class="tooltip">
+      <span>to_s<br/>to_s(io : IO)</span>
+    to_s</a>, 
+    
+  
+    <a href="../Allegro/UString.html#to_slice(size:Int=self.bytesize,*,copy=true)-instance-method" class="tooltip">
+      <span>to_slice(size : Int = <span class="k">self</span>.bytesize, *, copy = <span class="n">true</span>)</span>
+    to_slice</a>, 
+    
+  
+    <a href="../Allegro/UString.html#to_utf16-instance-method" class="tooltip">
+      <span>to_utf16</span>
+    to_utf16</a>
+    
+  
+
+
+    
+
+
+    
+
+  <h3>Class methods inherited from module <code><a href="../Allegro/UString.html">Allegro::UString</a></code></h3>
+  
+  
+    <a href="../Allegro/UString.html#build(&)-class-method" class="tooltip">
+      <span>build(&)</span>
+    build</a>, 
+    
+  
+    <a href="../Allegro/UString.html#from_utf16(slice:Slice(UInt16)):AllocatedUString-class-method" class="tooltip">
+      <span>from_utf16(slice : Slice(UInt16)) : AllocatedUString</span>
+    from_utf16</a>
+    
+  
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
   
     
 
@@ -471,23 +598,21 @@
 </div>
 
 
-
-
   <h2>
-    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Class Method Detail
+    Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="for(seconds:Float|Int)-class-method">
+    <div class="entry-detail" id="from(string:String):AllocatedUString-class-method">
       <div class="signature">
         
-        def self.<strong>for</strong>(seconds : Float | Int)
+        def self.<strong>from</strong>(string : <a href="../String.html">String</a>) : <a href="../Allegro/AllocatedUString.html">AllocatedUString</a>
 
-        <a class="method-permalink" href="#for(seconds:Float%7CInt)-class-method">#</a>
+        <a class="method-permalink" href="#from(string:String):AllocatedUString-class-method">#</a>
       </div>
       
       <br/>
@@ -496,12 +621,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="for(span:Time::Span)-class-method">
+    <div class="entry-detail" id="new(ptr)-class-method">
       <div class="signature">
         
-        def self.<strong>for</strong>(span : Time::Span)
+        def self.<strong>new</strong>(ptr)
 
-        <a class="method-permalink" href="#for(span:Time::Span)-class-method">#</a>
+        <a class="method-permalink" href="#new(ptr)-class-method">#</a>
       </div>
       
       <br/>
@@ -510,6 +635,8 @@
       </div>
     </div>
   
+
+
 
 
 
@@ -522,13 +649,18 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="add_to_count(diff)-instance-method">
+    <div class="entry-detail" id="<<(str:AnyUString)-instance-method">
       <div class="signature">
         
-        def <strong>add_to_count</strong>(diff)
+        def <strong><<</strong>(str : <a href="../Allegro/AnyUString.html">AnyUString</a>)
 
-        <a class="method-permalink" href="#add_to_count(diff)-instance-method">#</a>
+        <a class="method-permalink" href="#%3C%3C(str:AnyUString)-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Append string</p>
+        </div>
       
       <br/>
       <div>
@@ -536,13 +668,18 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="count-instance-method">
+    <div class="entry-detail" id="<<(str:String)-instance-method">
       <div class="signature">
         
-        def <strong>count</strong>
+        def <strong><<</strong>(str : <a href="../String.html">String</a>)
 
-        <a class="method-permalink" href="#count-instance-method">#</a>
+        <a class="method-permalink" href="#%3C%3C(str:String)-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Append string</p>
+        </div>
       
       <br/>
       <div>
@@ -550,13 +687,18 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="count=(value)-instance-method">
+    <div class="entry-detail" id="<<(chr:Char)-instance-method">
       <div class="signature">
         
-        def <strong>count=</strong>(value)
+        def <strong><<</strong>(chr : Char)
 
-        <a class="method-permalink" href="#count=(value)-instance-method">#</a>
+        <a class="method-permalink" href="#%3C%3C(chr:Char)-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Append single char</p>
+        </div>
       
       <br/>
       <div>
@@ -578,101 +720,17 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="resume-instance-method">
+    <div class="entry-detail" id="to_unsafe:Allegro::LibCore::Ustr-instance-method">
       <div class="signature">
         
-        def <strong>resume</strong>
+        def <strong>to_unsafe</strong> : Allegro::LibCore::Ustr
 
-        <a class="method-permalink" href="#resume-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="speed-instance-method">
-      <div class="signature">
-        
-        def <strong>speed</strong>
-
-        <a class="method-permalink" href="#speed-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="speed=(value)-instance-method">
-      <div class="signature">
-        
-        def <strong>speed=</strong>(value)
-
-        <a class="method-permalink" href="#speed=(value)-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="start-instance-method">
-      <div class="signature">
-        
-        def <strong>start</strong>
-
-        <a class="method-permalink" href="#start-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="started?:Bool-instance-method">
-      <div class="signature">
-        
-        def <strong>started?</strong> : Bool
-
-        <a class="method-permalink" href="#started?:Bool-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="stop-instance-method">
-      <div class="signature">
-        
-        def <strong>stop</strong>
-
-        <a class="method-permalink" href="#stop-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="to_unsafe:Allegro::LibCore::Timer-instance-method">
-      <div class="signature">
-        
-        def <strong>to_unsafe</strong> : Allegro::LibCore::Timer
-
-        <a class="method-permalink" href="#to_unsafe:Allegro::LibCore::Timer-instance-method">#</a>
+        <a class="method-permalink" href="#to_unsafe:Allegro::LibCore::Ustr-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Returns pointer to <code>ALLEGRO_TIMER</code> for using Allegro API directly</p>
+          <p>Returns pointer to <code>ALLEGRO_USTR</code></p>
         </div>
       
       <br/>

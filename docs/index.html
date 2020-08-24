@@ -61,6 +61,16 @@
       
         <ul>
   
+  <li class=" " data-id="allegro/Allegro/AllocatedUString" data-name="allegro::allocatedustring">
+      <a href="Allegro/AllocatedUString.html">AllocatedUString</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/AnyUString" data-name="allegro::anyustring">
+      <a href="Allegro/AnyUString.html">AnyUString</a>
+      
+    </li>
+  
   <li class=" " data-id="allegro/Allegro/AssertionFailed" data-name="allegro::assertionfailed">
       <a href="Allegro/AssertionFailed.html">AssertionFailed</a>
       
@@ -68,6 +78,11 @@
   
   <li class=" " data-id="allegro/Allegro/Color" data-name="allegro::color">
       <a href="Allegro/Color.html">Color</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/ConstUString" data-name="allegro::constustring">
+      <a href="Allegro/ConstUString.html">ConstUString</a>
       
     </li>
   
@@ -141,6 +156,11 @@
       
     </li>
   
+  <li class=" " data-id="allegro/Allegro/EmptyUString" data-name="allegro::emptyustring">
+      <a href="Allegro/EmptyUString.html">EmptyUString</a>
+      
+    </li>
+  
   <li class=" " data-id="allegro/Allegro/Error" data-name="allegro::error">
       <a href="Allegro/Error.html">Error</a>
       
@@ -168,6 +188,16 @@
   
   <li class=" " data-id="allegro/Allegro/Font" data-name="allegro::font">
       <a href="Allegro/Font.html">Font</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/FontFlags" data-name="allegro::fontflags">
+      <a href="Allegro/FontFlags.html">FontFlags</a>
+      
+    </li>
+  
+  <li class=" " data-id="allegro/Allegro/Image" data-name="allegro::image">
+      <a href="Allegro/Image.html">Image</a>
       
     </li>
   
@@ -211,6 +241,11 @@
       
     </li>
   
+  <li class=" " data-id="allegro/Allegro/StaticUString" data-name="allegro::staticustring">
+      <a href="Allegro/StaticUString.html">StaticUString</a>
+      
+    </li>
+  
   <li class=" " data-id="allegro/Allegro/SystemID" data-name="allegro::systemid">
       <a href="Allegro/SystemID.html">SystemID</a>
       
@@ -226,8 +261,43 @@
       
     </li>
   
+  <li class="parent " data-id="allegro/Allegro/UString" data-name="allegro::ustring">
+      <a href="Allegro/UString.html">UString</a>
+      
+        <ul>
+  
+  <li class=" " data-id="allegro/Allegro/UString/Builder" data-name="allegro::ustring::builder">
+      <a href="Allegro/UString/Builder.html">Builder</a>
+      
+    </li>
+  
+  <li class="parent " data-id="allegro/Allegro/UString/Reader" data-name="allegro::ustring::reader">
+      <a href="Allegro/UString/Reader.html">Reader</a>
+      
+        <ul>
+  
+  <li class=" " data-id="allegro/Allegro/UString/Reader/Error" data-name="allegro::ustring::reader::error">
+      <a href="Allegro/UString/Reader/Error.html">Error</a>
+      
+    </li>
+  
 </ul>
 
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="allegro/String" data-name="string">
+      <a href="String.html">String</a>
       
     </li>
   
@@ -244,7 +314,10 @@
   </svg>
 </a>crystal-allegro</h1>
 
-<p><span class="flag orange">TODO</span>  Currently nothing is implemented.</p>
+<p>Crystal binding of Allegro 5.x game library.</p>
+
+<p>Because Allegro is C library, no extra process exists other than
+building a regular Crystal app.</p>
 
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
@@ -252,12 +325,10 @@
   </svg>
 </a>Installation</h2>
 
-<ol><li>Install development files of Allegro 5.</li></ol>
-
-<ol><li>Add the dependency to your <code>shard.yml</code>:</li></ol>
-
-<p><code></code>`yaml
-   dependencies:</p>
+<ol><li>Install development files (header files, pkg-config files, and
+   libraries) of Allegro 5.</li><li>Add the dependency to your <code>shard.yml</code>:
+   <code></code>`yaml
+   dependencies:</li></ol>
 
 <pre><code> allegro:
    github: lugia<span class="o">-</span>kun<span class="s">/crystal-allegro</span></code></pre>
@@ -266,17 +337,22 @@
 
 <ol><li>Run <code>shards install</code></li></ol>
 
+<p>We are using GCC or Clang (or any compiler supports <code>-dM</code> option which
+lists defined macros instead of compile) to obtain specific values of
+macros defined by Allegro library. The compiler to be used for this
+can be changed using the enviroment variable <code>CRYSTAL_ALLEGRO_CC</code>.</p>
+
 <h2><a id="usage" class="anchor" href="#usage">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Usage</h2>
 
-<h3><a id="vivace-example" class="anchor" href="#vivace-example">
+<h3><a id="basic-example" class="anchor" href="#basic-example">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>Vivace Example</h3>
+</a>Basic Example</h3>
 
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;allegro&quot;</span>
 
@@ -310,7 +386,7 @@ loop <span class="k">do</span>
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
 
-<p><span class="flag orange">TODO</span>  Write usage instructions here</p>
+<p><img src="./examples/vivace.png" alt="Screenshot of Basic example"/></p>
 
 <h2><a id="development" class="anchor" href="#development">
   <svg class="octicon-link" aria-hidden="true">
