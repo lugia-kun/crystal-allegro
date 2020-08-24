@@ -325,23 +325,26 @@ module Allegro
   struct StaticUString
     @ptr : LibCore::Ustr
     @info : LibCore::UstrInfo
-    @ref : Bytes
+    @ref : String | Bytes
 
     include UString
 
-    def initialize(string : String)
-      initialize(string.to_slice)
-    end
-
-    def initialize(@ref : Bytes)
+    def initialize(@ref)
       @info = uninitialized LibCore::UstrInfo
-      @ptr = LibCore.al_ref_buffer(pointerof(@info), @ref, @ref.size)
+      @ptr = Pointer(Void).null.as(LibCore::Ustr)
     end
 
     # Returns pointer to `const ALLEGRO_USTR`
     #
     # WARNING: constness is not checked by API interface.
     def to_unsafe
+      if @ptr.null?
+        if @ref.is_a?(String)
+          @ptr = LibCore.al_ref_cstr(pointerof(@info), @ref)
+        else
+          @ptr = LibCore.al_ref_buffer(pointerof(@info), @ref, @ref.size)
+        end
+      end
       @ptr
     end
   end

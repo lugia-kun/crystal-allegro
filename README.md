@@ -24,9 +24,6 @@ can be changed using the enviroment variable `CRYSTAL_ALLEGRO_CC`.
 
 ## Usage
 
-Recommend to build with `--release`, otherwise you may have a problem
-with static storage.
-
 ### Basic Example
 
 ```crystal
